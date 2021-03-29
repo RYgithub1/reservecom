@@ -36,13 +36,14 @@ class _HomeScreenState extends State<HomeScreen> {
               children: <Widget>[
                 Text('Home', style: TextStyle(fontSize: 11)),
                 Text('ー'),
-                ],
+              ],
             ),
             activeIcon: Column(
               children: <Widget>[
-                Text('Home', style: TextStyle(fontSize: 11, color: Colors.blue)),
+                Text('Home',
+                    style: TextStyle(fontSize: 11, color: Colors.blue)),
                 Text('ー', style: TextStyle(color: Colors.blue)),
-                ],
+              ],
             ),
             label: 'Home',
           ),
