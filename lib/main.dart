@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'view/dashboard/dashboard_screen.dart';
+import 'view/home_screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: DashboardScreen(),
+      home: HomeScreen(),
     );
   }
 }
