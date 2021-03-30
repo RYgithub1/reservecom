@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'price_range_graph.dart';
+import 'sort_by_constraint.dart';
 
 class SearchBottomSheet extends StatefulWidget {
   // SearchBottomSheet({Key key}) : super(key: key);
@@ -26,10 +27,7 @@ class _SearchBottomSheetState extends State<SearchBottomSheet> {
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
               ),
-              // PriceRangeGraph(),
-
-  
-
+              SortByConstraint(),
             ],
           ),
 
@@ -280,6 +278,7 @@ class _SearchBottomSheetState extends State<SearchBottomSheet> {
               ),
             ),
           ),
+          SizedBox(height: 20),
         ],
       ),
     );
