@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../property/property_screen.dart';
+
 
 class PropertyTile extends StatelessWidget {
   // final Article article;
@@ -18,7 +20,11 @@ class PropertyTile extends StatelessWidget {
       ),
       child: InkWell(
         // onTap: () => onArticleClick(article),
-        onTap: () => {},
+        onTap: () {
+          Navigator.push(context, MaterialPageRoute(
+            builder: (BuildContext context) => PropertyScreen(),
+          ));
+        },
         child: Row(
           children: <Widget>[
             Expanded(
@@ -114,7 +120,8 @@ class PropertyTileRight extends StatelessWidget {
           // style: textTheme.bodyText1.copyWith(
           //   fontFamily: RegularFont,
           // ),
-          'Stockton New Hampshire'
+          'Stockton New Hampshire',
+          style: TextStyle(color: Colors.grey),
         ),
         SizedBox(height: 4),
         Row(
@@ -122,8 +129,14 @@ class PropertyTileRight extends StatelessWidget {
             Row(
                 children: <Widget>[
                   Icon(Icons.star, color: Colors.yellow),
-                  Text('4.8'),
-                  Text('(256 Reviews)'),
+                  Text(
+                    '4.8',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  Text(
+                    '(256 Reviews)',
+                    style: TextStyle(color: Colors.grey),
+                  ),
                 ],
               ),
           ],
@@ -135,8 +148,11 @@ class PropertyTileRight extends StatelessWidget {
               flex: 1,
               child: Row(
                 children: <Widget>[
-                  Icon(Icons.king_bed_outlined),
-                  Text('5'),
+                  Icon(Icons.king_bed_outlined, color: Colors.grey),
+                  Text(
+                    '5',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
                 ],
               ),
             ),
@@ -144,8 +160,11 @@ class PropertyTileRight extends StatelessWidget {
               flex: 1,
               child: Row(
                 children: <Widget>[
-                  Icon(Icons.bathtub_outlined),
-                  Text('2'),
+                  Icon(Icons.bathtub_outlined, color: Colors.grey),
+                  Text(
+                    '2',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
                 ],
               ),
             ),
@@ -153,8 +172,11 @@ class PropertyTileRight extends StatelessWidget {
               flex: 1,
               child: Row(
                 children: <Widget>[
-                  Icon(Icons.local_laundry_service_outlined),
-                  Text('1'),
+                  Icon(Icons.local_laundry_service_outlined, color: Colors.grey),
+                  Text(
+                    '1',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
                 ],
               ),
             ),
