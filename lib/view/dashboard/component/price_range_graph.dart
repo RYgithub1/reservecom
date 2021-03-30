@@ -43,6 +43,8 @@ class _PriceRangeGraphState extends State<PriceRangeGraph> {
                 activeTrackColor: Colors.blue,
                 showValueIndicator: ShowValueIndicator.onlyForContinuous,
                 trackHeight: 1,
+                thumbShape: RoundSliderThumbShape(enabledThumbRadius: 20.0),
+                overlayShape: RoundSliderOverlayShape(overlayRadius: 30.0),
               ),
               child: RangeSlider(
                 labels: RangeLabels(_startRange, _endRange),
