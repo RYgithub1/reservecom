@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
 import 'component/accommodation_type.dart';
 import 'component/property_tile.dart';
+import 'component/search_bottom_sheet.dart';
 
 class DashboardScreen extends StatefulWidget {
   @override
@@ -149,12 +151,21 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   ),
                   child: IconButton(
                     icon: Icon(
-                      Icons.import_export,
+                      Icons.import_export,   
                       size: 20,
                     ),
                     color: Colors.blue,
                     onPressed: () {
-                      print('comm: Notification');
+                      print('comm: SearchBottomSheet');
+                      showBarModalBottomSheet(
+                        backgroundColor: Colors.red,
+                        expand: true,
+                        context: context,
+                        builder: (context) => SingleChildScrollView(
+                          controller: ModalScrollController.of(context),
+                          child: SearchBottomSheet()
+                        ),
+                      );
                     },
                   ),
                 ),

@@ -11,7 +11,7 @@ class FavoriteScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text('FAVORITE'),
       ),
-      body: Center(child: Text('This feature will be added soon.'),),
+      body: Center(child: Text('coming soon')),
     );
   }
 }

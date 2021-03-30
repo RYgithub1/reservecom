@@ -13,7 +13,7 @@ class PropertyTile extends StatelessWidget {
       margin: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-            border: Border.all(color: Colors.red),
+            border: Border.all(color: Colors.grey),
             borderRadius: BorderRadius.circular(20),
       ),
       child: InkWell(

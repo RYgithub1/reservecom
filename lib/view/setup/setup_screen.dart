@@ -9,7 +9,7 @@ class SetupScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text('Setup'),
       ),
-      body: Center(child: Text('This feature will be added soon.'),),
+      body: Center(child: Text('coming soon')),
     );
   }
 }

@@ -12,7 +12,7 @@ class ChatScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text('CHAT'),
       ),
-      body: Center(child: Text('This feature will be added soon.'),),
+      body: Center(child: Text('coming soon')),
     );
   }
 }

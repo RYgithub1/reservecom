@@ -10,7 +10,7 @@ class ReserveScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text('RESERVE'),
       ),
-      body: Center(child: Text('This feature will be added soon.'),),
+      body: Center(child: Text('coming soon')),
     );
   }
 }
