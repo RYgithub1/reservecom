@@ -1,7 +1,7 @@
 import 'package:get_it/get_it.dart';
-import 'package:reservecom/viewmodel/property_view_model.dart';
 
-import 'api_manager.dart';
+import '../model/api_manager.dart';
+import '../viewmodel/property_view_model.dart';
 import 'navigation_service.dart';
 
 GetIt locator = GetIt.instance;

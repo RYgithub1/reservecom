@@ -1,5 +1,4 @@
 // color
-// route
 // theme
 // font
 // textStyle

@@ -4,8 +4,8 @@ import 'package:provider/provider.dart';
 
 import '../view/dashboard/dashboard_screen.dart';
 import '../view/property/property_screen.dart';
+import '../view/view_common/page_not_found.dart';
 import '../viewmodel/property_view_model.dart';
-import 'page_not_found.dart';
 import 'routes.dart' as routes;
 import 'service_locator.dart';
 
