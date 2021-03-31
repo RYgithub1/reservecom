@@ -151,7 +151,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   ),
                   child: IconButton(
                     icon: Icon(
-                      Icons.import_export,   
+                      Icons.import_export,
                       size: 20,
                     ),
                     color: Colors.blue,
@@ -172,7 +172,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
               ),
             ],
           ),
-           
+
           /// [Accommodation Type]
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
