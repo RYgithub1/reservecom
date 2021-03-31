@@ -16,7 +16,7 @@ class _SearchBottomSheetState extends State<SearchBottomSheet> {
       padding: const EdgeInsets.symmetric(horizontal: 12),
       child: Column(
         children: <Widget>[
-          SizedBox(height: 32),
+          SizedBox(height: 20),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
@@ -31,7 +31,7 @@ class _SearchBottomSheetState extends State<SearchBottomSheet> {
             ],
           ),
 
-          SizedBox(height: 20),
+          SizedBox(height: 12),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
@@ -46,7 +46,7 @@ class _SearchBottomSheetState extends State<SearchBottomSheet> {
             ],
           ),
 
-          SizedBox(height: 20),
+          SizedBox(height: 12),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
@@ -155,7 +155,7 @@ class _SearchBottomSheetState extends State<SearchBottomSheet> {
             ],
           ),
 
-          SizedBox(height: 20),
+          SizedBox(height: 12),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
@@ -170,7 +170,7 @@ class _SearchBottomSheetState extends State<SearchBottomSheet> {
                     label: Text('Dining room'),
                     autofocus: true,
                     avatar: CircleAvatar(
-                      child: Icon(Icons.restaurant),
+                      child: Icon(Icons.restaurant, size: 16),
                       backgroundColor: Colors.grey[100],
                     ),
                   ),
@@ -178,7 +178,7 @@ class _SearchBottomSheetState extends State<SearchBottomSheet> {
                     label: Text('Bathroom'),
                     autofocus: true,
                     avatar: CircleAvatar(
-                      child: Icon(Icons.bathtub_outlined),
+                      child: Icon(Icons.bathtub_outlined, size: 16),
                       backgroundColor: Colors.grey[100],
                     ),
                   ),
@@ -186,7 +186,7 @@ class _SearchBottomSheetState extends State<SearchBottomSheet> {
                     label: Text('TV room'),
                     autofocus: true,
                     avatar: CircleAvatar(
-                      child: Icon(Icons.tv),
+                      child: Icon(Icons.tv, size: 16),
                       backgroundColor: Colors.grey[100],
                     ),
                   ),
@@ -194,7 +194,7 @@ class _SearchBottomSheetState extends State<SearchBottomSheet> {
                     label: Text('Bedroom'),
                     autofocus: true,
                     avatar: CircleAvatar(
-                      child: Icon(Icons.king_bed_outlined),
+                      child: Icon(Icons.king_bed_outlined, size: 16),
                       backgroundColor: Colors.grey[100],
                     ),
                   ),
@@ -202,7 +202,7 @@ class _SearchBottomSheetState extends State<SearchBottomSheet> {
                     label: Text('Kitchen'),
                     autofocus: true,
                     avatar: CircleAvatar(
-                      child: Icon(Icons.kitchen),
+                      child: Icon(Icons.kitchen, size: 16),
                       backgroundColor: Colors.grey[100],
                     ),
                   ),
@@ -210,7 +210,7 @@ class _SearchBottomSheetState extends State<SearchBottomSheet> {
                     label: Text('Drawing room'),
                     autofocus: true,
                     avatar: CircleAvatar(
-                      child: Icon(Icons.person_pin_outlined),
+                      child: Icon(Icons.person_pin_outlined, size: 16),
                       backgroundColor: Colors.grey[100],
                     ),
                   ),
@@ -218,7 +218,7 @@ class _SearchBottomSheetState extends State<SearchBottomSheet> {
                     label: Text('Toilet'),
                     autofocus: true,
                     avatar: CircleAvatar(
-                      child: Icon(Icons.person_outline),
+                      child: Icon(Icons.person_outline, size: 16),
                       backgroundColor: Colors.grey[100],
                     ),
                   ),
@@ -226,7 +226,7 @@ class _SearchBottomSheetState extends State<SearchBottomSheet> {
                     label: Text('Basin'),
                     autofocus: true,
                     avatar: CircleAvatar(
-                      child: Icon(Icons.wash_outlined),
+                      child: Icon(Icons.wash_outlined, size: 16),
                       backgroundColor: Colors.grey[100],
                     ),
                   ),
@@ -234,7 +234,7 @@ class _SearchBottomSheetState extends State<SearchBottomSheet> {
                     label: Text('Gym'),
                     autofocus: true,
                     avatar: CircleAvatar(
-                      child: Icon(Icons.sports_handball),
+                      child: Icon(Icons.sports_handball, size: 16),
                       backgroundColor: Colors.grey[100],
                     ),
                   ),
@@ -242,7 +242,7 @@ class _SearchBottomSheetState extends State<SearchBottomSheet> {
                     label: Text('Spa'),
                     autofocus: true,
                     avatar: CircleAvatar(
-                      child: Icon(Icons.spa_outlined),
+                      child: Icon(Icons.spa_outlined, size: 16),
                       backgroundColor: Colors.grey[100],
                     ),
                   ),
@@ -250,7 +250,7 @@ class _SearchBottomSheetState extends State<SearchBottomSheet> {
                     label: Text('Parking'),
                     autofocus: true,
                     avatar: CircleAvatar(
-                      child: Icon(Icons.local_parking),
+                      child: Icon(Icons.local_parking, size: 16),
                       backgroundColor: Colors.grey[100],
                     ),
                   ),
@@ -259,7 +259,7 @@ class _SearchBottomSheetState extends State<SearchBottomSheet> {
             ],
           ),
 
-          SizedBox(height: 20),
+          SizedBox(height: 4),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Container(

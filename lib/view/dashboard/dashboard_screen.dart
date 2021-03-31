@@ -213,10 +213,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
           /// [Property Tile]
           Expanded(
-            child: propertyList == false
+            child: propertyList == false 
             ? Center(child: CircularProgressIndicator())
             : ListView.builder(
-              itemCount: 7,
+              itemCount: 8,
               itemBuilder: (BuildContext context, int arrayNumber) {
                 return PropertyTile(
                   // article: viewModel.articles[arrayNumber],

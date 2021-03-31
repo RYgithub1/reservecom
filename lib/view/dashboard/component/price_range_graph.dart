@@ -33,10 +33,10 @@ class _PriceRangeGraphState extends State<PriceRangeGraph> {
           alignment: Alignment.bottomCenter,
           children: <Widget>[
             Container(
-              height: 100,
+              height: 60,
               width: double.infinity,
-              color: Colors.lightGreen,
-              child: Center(child: Text('Show bar graph')),
+              color: Colors.grey[200],
+              child: Center(child: Text('')),
             ),
             SliderTheme(
               data: SliderThemeData(
@@ -50,8 +50,8 @@ class _PriceRangeGraphState extends State<PriceRangeGraph> {
                 labels: RangeLabels(_startRange, _endRange),
                 values: _rangeValues,
                 min: 100,
-                max: 7000,
-                divisions: 200,
+                max: 7100,
+                divisions: 70,
                 onChanged: (values) {
                   _rangeValues = values;
                   setState(() => _updateLabels(values));

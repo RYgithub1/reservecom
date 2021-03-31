@@ -41,7 +41,7 @@ class PropertyScreen extends StatelessWidget {
                 ),
                 color: Colors.grey,
                 onPressed: () {
-                  print('comm: Bookmarked');
+                  print('comm: Favorite one');
                 },
               ),
             ),
