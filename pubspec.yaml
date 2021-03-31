@@ -16,6 +16,9 @@ dependencies:
   modal_bottom_sheet: ^1.0.0
   dio: ^3.0.10
   flutter_dotenv: ^3.0.2
+  shared_preferences: ^0.5.12+4
+  get_it: ^5.0.6
+  provider: ^4.3.3
 
 
 dev_dependencies:
