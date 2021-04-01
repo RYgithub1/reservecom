@@ -6,11 +6,6 @@ import 'property_tile_right.dart';
 
 /// Widget [PropertyTile] : The PropertyTile is used for Dashboard Screen
 class PropertyTile extends StatelessWidget {
-  /// [Click処理も渡す]
-  // final Article article;
-  // final ValueChanged onArticleClick;
-  // const PropertyTile({this.article, this.onArticleClick});
-  // const PropertyTile({this.onArticleClick});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -21,7 +16,6 @@ class PropertyTile extends StatelessWidget {
             borderRadius: BorderRadius.circular(20),
       ),
       child: InkWell(
-        // onTap: () => onArticleClick(article),
         onTap: () {
           Navigator.of(context).push(MaterialPageRoute(
             builder: (context) {
@@ -33,11 +27,13 @@ class PropertyTile extends StatelessWidget {
         },
         child: Row(
           children: <Widget>[
-            Expanded(
+            // Expanded(
+            Flexible(
               flex: 1,
               child: PropertyTileLeft(),
             ),
-            Expanded(
+            // Expanded(
+            Flexible(
               flex: 2,
               child: PropertyTileRight(),
             ),

@@ -97,13 +97,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
         elevation: 0,
       ),
 
-      // body: Consumer<PropertyViewModel>(     
-      //   builder: (context, propertyViewModel, child) {
-      // body: ChangeNotifierProvider<PropertyViewModel>(     
-      //   create: (_) => PropertyViewModel(),
-      //   builder: (context) {
-          // return  Column(
-      // body: FutureBuilder<PropertyViewModel>(
+
       body: FutureBuilder(
         future: _getPropertyInfo,
         builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
@@ -111,9 +105,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
           return snapshot.connectionState == ConnectionState.waiting
             // ? Center(child: CircularProgressIndicator())
             // : snapshot.error != null
-                ? Expanded(child: ApiErrorWidget(tryAgain: _reloadData))
+                // ? Expanded(child: ApiErrorWidget(tryAgain: _reloadData))
+                ? Center(child: ApiErrorWidget(tryAgain: _reloadData))
                 : Column(
                   children: <Widget>[
+
                     /// [Theme Text]
                     Container(
                       margin: const EdgeInsets.symmetric(horizontal: 12),
@@ -252,19 +248,21 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     ),
 
                     /// [Property Tile]
-                    Expanded(
+                    // Expanded(
+                    Flexible(
+                      flex: 1,
                       child: propertyList == false  
-                          ? Center(child: CircularProgressIndicator())
-                          : Consumer<PropertyViewModel>(
-                            builder: (context, propertyViewModel, child) {
-                              return ListView.builder(
-                                itemCount: propertyViewModel.properties.length,
-                                itemBuilder: (BuildContext context, int arrayNumber) {
-                                  return PropertyTile();
-                                },
-                              );
-                            }
-                          ),
+                        ? Center(child: CircularProgressIndicator())
+                        : Consumer<PropertyViewModel>(
+                          builder: (context, propertyViewModel, child) {
+                            return ListView.builder(
+                              itemCount: propertyViewModel.properties.length,
+                              itemBuilder: (BuildContext context, int arrayNumber) {
+                                return PropertyTile();
+                              },
+                            );
+                          }
+                        )
                     ),
                   ],
           );
