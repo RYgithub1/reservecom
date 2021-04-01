@@ -13,18 +13,6 @@ Future<void> setupLocator() async {
   // * Navigation Service
   locator.registerLazySingleton<NavigationService>(() => NavigationService());
 
-  // * Local Data Source
-  // SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-  // locator.registerLazySingleton<LocalDataSource>(
-  //     () => SharedPreferenceDataSource(prefs: sharedPreferences));
-
-  // * Dashboard Provider
-  // locator.registerLazySingleton<DashboardProvider>(() => DashboardProvider());
-
-  // * Firebase Analytics Manager
-  // locator.registerLazySingleton<FirebaseAnalyticsService>(
-  //     () => FirebaseAnalyticsService());
-
   // * Property
-  locator.registerLazySingleton<PropertyViewModel>(() => PropertyViewModel());
+  // locator.registerLazySingleton<PropertyViewModel>(() => PropertyViewModel());  
 }

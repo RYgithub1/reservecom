@@ -23,8 +23,12 @@ class PropertyTile extends StatelessWidget {
       child: InkWell(
         // onTap: () => onArticleClick(article),
         onTap: () {
-          Navigator.push(context, MaterialPageRoute(
-            builder: (BuildContext context) => PropertyScreen(),
+          Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) {
+              return PropertyScreen(
+              
+            );
+            },
           ));
         },
         child: Row(

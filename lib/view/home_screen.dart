@@ -17,7 +17,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    _pages = [
+    _pages = <Widget>[
       DashboardScreen(),
       ReserveScreen(),
       ChatScreen(),

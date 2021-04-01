@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:reservecom/view/home_screen.dart';
 
 import '../view/dashboard/dashboard_screen.dart';
 import '../view/property/property_screen.dart';
@@ -17,22 +18,34 @@ class RouteGenerator {
       case '/':
         return MaterialPageRoute(
           settings: settings,
-          builder: (context) => DashboardScreen(),
+          builder: (context) => HomeScreen(),
         );
+
+
+      // case routes.DashboardScreenRoute:
+      //   return MaterialPageRoute(
+      //     builder: (_) => ChangeNotifierProvider.value(
+      //       value: locator<PropertyViewModel>(),
+      //       child: DashboardScreen(),
+      //     ),
+      //   );
       case routes.DashboardScreenRoute:
         return MaterialPageRoute(
-          builder: (_) => ChangeNotifierProvider.value(
-            value: locator<PropertyViewModel>(),
+          builder: (_) => ChangeNotifierProvider(
+            create: (ctx) => PropertyViewModel(),
             child: DashboardScreen(),
           ),
-        );
-      case routes.PropertyScreenRoute:
-        return MaterialPageRoute(
-          builder: (_) => ChangeNotifierProvider.value(
-            value: locator<PropertyViewModel>(),
-            child: PropertyScreen(),
-          ),
-        );
+      );
+
+
+
+      // case routes.PropertyScreenRoute:
+      //   return MaterialPageRoute(
+      //     builder: (_) => ChangeNotifierProvider.value(
+      //       value: locator<PropertyViewModel>(),
+      //       child: PropertyScreen(),
+      //     ),
+      //   );
     }
 
     return MaterialPageRoute(

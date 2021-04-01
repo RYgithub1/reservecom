@@ -17,7 +17,9 @@ class _PageNotFoundState extends State<PageNotFound> {
             alignment: FractionalOffset.centerLeft,
             child: IconButton(
               icon: Icon(Icons.arrow_back_ios, color: Colors.white),
-              onPressed: () => Navigator.of(context).pop(),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
             ),
           ),
           title: Text(
