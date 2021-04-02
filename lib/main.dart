@@ -22,7 +22,6 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      // home: HomeScreen(),
       home: ChangeNotifierProvider<PropertyViewModel>(
         create: (ctx) => PropertyViewModel(),
         child: HomeScreen(),

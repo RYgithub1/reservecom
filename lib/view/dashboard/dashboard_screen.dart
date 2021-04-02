@@ -255,10 +255,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
                             print('comm1: ${propertyViewModel.properties.length}');
                             // print('comm2: ${propertyViewModel.properties[0].city}');  
                             return ListView.builder(
-                              itemCount: propertyViewModel.properties.length,  
+                              itemCount: propertyViewModel.properties.length,
                               // itemCount: 4,
                               itemBuilder: (BuildContext context, int arrayNumber) {
-                                return PropertyTile();
+                                return PropertyTile(
+                                  property: propertyViewModel.properties[arrayNumber],
+                                );
                               },
                             );
                           }

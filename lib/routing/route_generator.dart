@@ -21,7 +21,6 @@ class RouteGenerator {
           builder: (context) => HomeScreen(),
         );
 
-
       // case routes.DashboardScreenRoute:
       //   return MaterialPageRoute(
       //     builder: (_) => ChangeNotifierProvider.value(
@@ -36,8 +35,6 @@ class RouteGenerator {
             child: DashboardScreen(),
           ),
       );
-
-
 
       // case routes.PropertyScreenRoute:
       //   return MaterialPageRoute(

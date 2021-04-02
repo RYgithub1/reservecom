@@ -1,10 +1,13 @@
 
 import 'package:flutter/material.dart';
 
+import '../../../data/property.dart';
+
 /// Widget [PropertyTileRight] : The PropertyTileRight is used for Property Tile
 class PropertyTileRight extends StatelessWidget {
-  // final Article article;
-  // const PropertyTileRight({this.article});
+  final Property property;
+  PropertyTileRight({@required this.property});
+
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
