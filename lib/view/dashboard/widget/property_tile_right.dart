@@ -15,14 +15,14 @@ class PropertyTileRight extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text(
-          'Duplex Apartment',
+          property.propertyDetails.title,
           style: textTheme.subtitle1.copyWith(
             fontWeight: FontWeight.bold,
           ),
         ),
         SizedBox(height: 4),
         Text(
-          'Stockton New Hampshire',
+          property.city,
           style: textTheme.bodyText1.copyWith(
             color: Colors.grey
           ),
@@ -34,11 +34,11 @@ class PropertyTileRight extends StatelessWidget {
                 children: <Widget>[
                   Icon(Icons.star, color: Colors.yellow),
                   Text(
-                    '4.8',
+                    property.rating.toString(),
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                   Text(
-                    '(256 Reviews)',
+                    '(' + '${property.id*127}' + ' Reviews)',
                     style: TextStyle(color: Colors.grey),
                   ),
                 ],
@@ -54,7 +54,7 @@ class PropertyTileRight extends StatelessWidget {
                 children: <Widget>[
                   Icon(Icons.king_bed_outlined, color: Colors.grey),
                   Text(
-                    '5',
+                    property.propertyDetails.bedCount.toString(),
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ],
@@ -66,7 +66,7 @@ class PropertyTileRight extends StatelessWidget {
                 children: <Widget>[
                   Icon(Icons.bathtub_outlined, color: Colors.grey),
                   Text(
-                    '2',
+                    property.propertyDetails.bathroomCount.toString(),
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ],
@@ -78,7 +78,7 @@ class PropertyTileRight extends StatelessWidget {
                 children: <Widget>[
                   Icon(Icons.local_laundry_service_outlined, color: Colors.grey),
                   Text(
-                    '1',
+                    property.propertyDetails.laundryCount.toString(),
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ],
@@ -92,7 +92,7 @@ class PropertyTileRight extends StatelessWidget {
             style: TextStyle(color: Colors.grey, fontSize: 20),
             children: <TextSpan>[
               TextSpan(
-                text: '\$1,495',
+                text: property.rentalPrice,
                 style: TextStyle(fontSize: 16, color: Colors.blue, fontWeight: FontWeight.bold),
               ),
               TextSpan(

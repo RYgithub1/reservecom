@@ -252,8 +252,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         ? Center(child: CircularProgressIndicator())
                         : Consumer<PropertyViewModel>(
                           builder: (context, propertyViewModel, child) {
-                            print('comm1: ${propertyViewModel.properties.length}');
-                            // print('comm2: ${propertyViewModel.properties[0].city}');  
                             return ListView.builder(
                               itemCount: propertyViewModel.properties.length,
                               // itemCount: 4,

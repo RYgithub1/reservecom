@@ -31,6 +31,7 @@ flutter:
   assets:
     - .env
     - assets/images/stevejobs.jpeg
+    - assets/images/stevewozniak.jpeg
   # fonts:
   #   - family: Schyler
   #     fonts:

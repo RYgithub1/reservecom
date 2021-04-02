@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:reservecom/data/property.dart';
 
 class PropertyScreen extends StatelessWidget {
-  // const PropertyScreen({Key key}) : super(key: key);
+  final Property property;
+  PropertyScreen({@required this.property});
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -41,7 +44,7 @@ class PropertyScreen extends StatelessWidget {
                 ),
                 color: Colors.grey,
                 onPressed: () {
-                  print('comm: Favorite one');
+                  print('comm: Pushed btn: Favorite one');
                 },
               ),
             ),
@@ -61,18 +64,18 @@ class PropertyScreen extends StatelessWidget {
                   height: 180,
                   child: ClipRRect(
                       borderRadius: BorderRadius.circular(32),
-                      child: Image.asset(
-                        'assets/images/stevejobs.jpeg',
+                      child: Image.network(
+                        property.propertyDetails.image,
                         fit: BoxFit.fill,
                       ),
                     ),
                 ),
-                  
+
                 Container(
                   padding: EdgeInsets.only(top: 8, bottom: 2),
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    'Duplex Apartment',
+                    property.propertyDetails.title,
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   ),
                 ),
@@ -83,7 +86,7 @@ class PropertyScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
                       Text(
-                        'Stockton New Hampshire',
+                        property.city,
                         style: TextStyle(color: Colors.grey),
                       ),
                       Row(
@@ -92,11 +95,11 @@ class PropertyScreen extends StatelessWidget {
                             children: <Widget>[
                               Icon(Icons.star, color: Colors.yellow),
                               Text(
-                                '4.8',
+                                property.rating.toString(),
                                 style: TextStyle(fontWeight: FontWeight.bold),
                               ),
                               Text(
-                                '(256 Reviews)',
+                                '(' + '${property.id*127}' + ' Reviews)',
                                 style: TextStyle(color: Colors.grey),
                               ),
                             ],
@@ -116,7 +119,7 @@ class PropertyScreen extends StatelessWidget {
                         children: <Widget>[
                           Icon(Icons.king_bed_outlined, color: Colors.grey),
                           Text(
-                            '5',
+                            property.propertyDetails.bedCount.toString(),
                             style: TextStyle(fontWeight: FontWeight.bold),
                           ),
                         ],
@@ -126,7 +129,7 @@ class PropertyScreen extends StatelessWidget {
                         children: <Widget>[
                           Icon(Icons.bathtub_outlined, color: Colors.grey),
                           Text(
-                            '2',
+                            property.propertyDetails.bathroomCount.toString(),
                             style: TextStyle(fontWeight: FontWeight.bold),
                           ),
                         ],
@@ -136,7 +139,7 @@ class PropertyScreen extends StatelessWidget {
                         children: <Widget>[
                           Icon(Icons.local_laundry_service_outlined, color: Colors.grey),
                           Text(
-                            '1',
+                            property.propertyDetails.laundryCount.toString(),
                             style: TextStyle(fontWeight: FontWeight.bold),
                           ),
                         ],
@@ -152,7 +155,7 @@ class PropertyScreen extends StatelessWidget {
                       style: TextStyle(color: Colors.grey, fontSize: 20),
                       children: <TextSpan>[
                         TextSpan(
-                          text: '\$1,495',
+                          text: property.rentalPrice,
                           style: TextStyle(fontSize: 20, color: Colors.blue, fontWeight: FontWeight.bold),
                         ),
                         TextSpan(
@@ -178,7 +181,7 @@ class PropertyScreen extends StatelessWidget {
                 Container(
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    'jobs jobs jobs jobs jobs jobs jobs jobs jobs jobs jobs jobs jobs jobs jobs jobs jobs jobs jobs jobs jobs jobs jobs jobs jobs jobs jobs jobs jobs jobs jobs jobs jobs jobs jobs jobs jobs jobs jobs jobs jobs jobs jobs jobs jobs jobs jobs jobs jobs jobs jobs jobs jobs jobs jobs jobs jobs jobs jobs jobs jobs jobs jobs jobs jobs ',
+                      property.propertyDetails.description,
                     style: TextStyle(fontSize: 12, color: Colors.grey),
                   ),
                 ),
@@ -193,8 +196,8 @@ class PropertyScreen extends StatelessWidget {
                     child: FittedBox(
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(52),
-                        child: Image.asset(
-                          'assets/images/stevejobs.jpeg',
+                        child: Image.network(
+                          property.propertyDetails.image,
                           fit: BoxFit.fill,
                         ),
                       ),
@@ -205,7 +208,7 @@ class PropertyScreen extends StatelessWidget {
                     style: TextStyle(color: Colors.grey),
                   ),
                   subtitle: Text(
-                    'Owner s name',
+                    property.ownerName,
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                   trailing: Row(
@@ -225,7 +228,7 @@ class PropertyScreen extends StatelessWidget {
                           ),
                           color: Colors.grey,
                           onPressed: () {
-                            print('comm: Chat with Owner');
+                            print('comm: Chat with : ' + '${property.ownerName}');
                           },
                         ),
                       ),
@@ -243,7 +246,7 @@ class PropertyScreen extends StatelessWidget {
                           ),
                           color: Colors.white,
                           onPressed: () {
-                            print('comm: Call to Owner');
+                            print('comm: Call to : ' + '${property.ownerPhoneNumber}');
                           },
                         ),
                       ),

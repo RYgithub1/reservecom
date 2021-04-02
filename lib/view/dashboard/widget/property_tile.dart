@@ -23,7 +23,7 @@ class PropertyTile extends StatelessWidget {
         onTap: () {
           Navigator.of(context).push(MaterialPageRoute(
             builder: (context) {
-              return PropertyScreen();
+              return PropertyScreen(property: property);
             },
           ));
         },
