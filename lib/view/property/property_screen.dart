@@ -63,12 +63,12 @@ class PropertyScreen extends StatelessWidget {
                   width: double.infinity,
                   height: 180,
                   child: ClipRRect(
-                      borderRadius: BorderRadius.circular(32),
-                      child: Image.network(
-                        property.propertyDetails.image,
-                        fit: BoxFit.fill,
-                      ),
+                    borderRadius: BorderRadius.circular(32),
+                    child: Image.network(
+                      property.propertyDetails.image,
+                      fit: BoxFit.fill,
                     ),
+                  ),
                 ),
 
                 Container(
@@ -188,18 +188,12 @@ class PropertyScreen extends StatelessWidget {
 
                 ListTile(
                   leading: Container(
-                    margin: const EdgeInsets.all(8),
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.transparent),
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: FittedBox(
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(52),
-                        child: Image.network(
-                          property.propertyDetails.image,
-                          fit: BoxFit.fill,
-                        ),
+                    margin: const EdgeInsets.all(4),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(16),
+                      child: Image.asset(
+                        'assets/images/stevewozniak.jpeg',
+                        fit: BoxFit.cover,
                       ),
                     ),
                   ),
@@ -216,7 +210,6 @@ class PropertyScreen extends StatelessWidget {
                     children: <Widget>[
                       Container(
                         margin: const EdgeInsets.only(top: 8, right: 4, bottom: 8),
-                        padding: const EdgeInsets.all(0),
                         decoration: BoxDecoration(
                           border: Border.all(color: Colors.grey),
                           borderRadius: BorderRadius.circular(16),
@@ -234,7 +227,6 @@ class PropertyScreen extends StatelessWidget {
                       ),
                       Container(
                         margin: const EdgeInsets.only(top: 8, bottom: 8),
-                        padding: const EdgeInsets.all(0),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(16),
                           color: Colors.green,
@@ -267,6 +259,9 @@ class PropertyScreen extends StatelessWidget {
                         style: TextStyle(color: Colors.white),
                       ),
                       onPressed: () {
+
+
+
 
                       },
                       color: Colors.blue,

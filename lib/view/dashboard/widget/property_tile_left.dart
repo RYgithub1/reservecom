@@ -13,13 +13,18 @@ class PropertyTileLeft extends StatelessWidget {
       alignment: Alignment.topLeft,
       children: <Widget>[
         Container(
-          child: Image.network(
-            property.propertyDetails.image,
-            fit: BoxFit.cover,
+          width: double.infinity,
+          height: 128,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(16),
+            child: Image.network(
+              property.propertyDetails.image,
+              fit: BoxFit.cover,
+            ),
           ),
         ),
         Container(
-          margin: const EdgeInsets.all(4),
+          margin: const EdgeInsets.all(6),
           padding: const EdgeInsets.all(4),
           decoration: BoxDecoration(
             border: Border.all(color: Colors.grey),
@@ -28,7 +33,7 @@ class PropertyTileLeft extends StatelessWidget {
           ),
           child: const Icon(
             Icons.bookmark,
-            size: 20,
+            size: 16,
             color: Colors.white,
           ),
         ),

@@ -29,12 +29,10 @@ class PropertyTile extends StatelessWidget {
         },
         child: Row(
           children: <Widget>[
-
             Flexible(
               flex: 1,
               child: PropertyTileLeft(property: property),
             ),
-
             Flexible(
               flex: 2,
               child: PropertyTileRight(property: property),
