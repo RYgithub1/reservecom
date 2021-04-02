@@ -101,12 +101,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
       body: FutureBuilder(
         future: _getPropertyInfo,
         builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
-        // child: Column(
           return snapshot.connectionState == ConnectionState.waiting
             // ? Center(child: CircularProgressIndicator())
             // : snapshot.error != null
-                // ? Expanded(child: ApiErrorWidget(tryAgain: _reloadData))
-                ? Center(child: ApiErrorWidget(tryAgain: _reloadData))
+                // ? Center(child: ApiErrorWidget(tryAgain: _reloadData))
+                ? Center(child: CircularProgressIndicator())
                 : Column(
                   children: <Widget>[
 
@@ -248,21 +247,22 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     ),
 
                     /// [Property Tile]
-                    // Expanded(
-                    Flexible(
-                      flex: 1,
+                    Expanded(
                       child: propertyList == false  
                         ? Center(child: CircularProgressIndicator())
                         : Consumer<PropertyViewModel>(
                           builder: (context, propertyViewModel, child) {
+                            print('comm1: ${propertyViewModel.properties.length}');
+                            // print('comm2: ${propertyViewModel.properties[0].city}');  
                             return ListView.builder(
-                              itemCount: propertyViewModel.properties.length,
+                              itemCount: propertyViewModel.properties.length,  
+                              // itemCount: 4,
                               itemBuilder: (BuildContext context, int arrayNumber) {
                                 return PropertyTile();
                               },
                             );
                           }
-                        )
+                        ),
                     ),
                   ],
           );

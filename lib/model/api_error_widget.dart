@@ -17,11 +17,11 @@ class ApiErrorWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Image.asset('assets/images/stevejobs.jpeg', height: 240),
-          SizedBox(height: 32),
-          Text('something_wrong', textAlign: TextAlign.center),
+          SizedBox(height: 20),
+          Text('something wrong', textAlign: TextAlign.center),
           RaisedButton(
             onPressed: tryAgain,
-            child: Text('try_again', textAlign: TextAlign.center),
+            child: Text('TRY AGAIN', textAlign: TextAlign.center),
             textColor: Colors.white,
             color: Colors.blue,
           ),

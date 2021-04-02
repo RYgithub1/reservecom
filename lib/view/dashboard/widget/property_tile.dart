@@ -19,20 +19,16 @@ class PropertyTile extends StatelessWidget {
         onTap: () {
           Navigator.of(context).push(MaterialPageRoute(
             builder: (context) {
-              return PropertyScreen(
-              
-            );
+              return PropertyScreen();
             },
           ));
         },
         child: Row(
           children: <Widget>[
-            // Expanded(
             Flexible(
               flex: 1,
               child: PropertyTileLeft(),
             ),
-            // Expanded(
             Flexible(
               flex: 2,
               child: PropertyTileRight(),
