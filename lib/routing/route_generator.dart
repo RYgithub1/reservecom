@@ -36,13 +36,13 @@ class RouteGenerator {
           ),
       );
 
-      // case routes.PropertyScreenRoute:
-      //   return MaterialPageRoute(
-      //     builder: (_) => ChangeNotifierProvider.value(
-      //       value: locator<PropertyViewModel>(),
-      //       child: PropertyScreen(),
-      //     ),
-      //   );
+      case routes.PropertyScreenRoute:
+        return MaterialPageRoute(
+          builder: (_) => ChangeNotifierProvider.value(
+            value: locator<PropertyViewModel>(),
+            child: PropertyScreen(),  
+          ),
+        );
     }
 
     return MaterialPageRoute(

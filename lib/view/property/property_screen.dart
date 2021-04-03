@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:reservecom/data/property.dart';
+import 'package:reservecom/viewmodel/property_view_model.dart';
 
 class PropertyScreen extends StatelessWidget {
   final Property property;
   PropertyScreen({@required this.property});
+  /// propertyが渡せていないからエラー
 
   @override
   Widget build(BuildContext context) {
@@ -253,21 +256,43 @@ class PropertyScreen extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Container(
                     width: double.infinity,
-                    child: FlatButton(
-                      child: Text(
-                        'Book Now',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      onPressed: () {
-
-
-
-
+                    child: FutureBuilder(  
+                      future: Provider.of<PropertyViewModel>(context, listen: false).getFutureValue(),
+                      builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
+                        return FlatButton(
+                          color: Colors.blue,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: snapshot.connectionState != ConnectionState.done
+                              ? Container(
+                                width: 40,
+                                height: 40,
+                                child: CircularProgressIndicator(
+                                  valueColor: const AlwaysStoppedAnimation<Color>(Colors.orange),
+                                ),
+                              )
+                              : snapshot.hasError
+                                  ? Text(
+                                    snapshot.error.toString(),
+                                    style: TextStyle(color: Colors.white),
+                                  )
+                                  : snapshot.hasData
+                                    ? Text(
+                                      snapshot.data,
+                                      style: TextStyle(color: Colors.white),
+                                    )
+                                    : Text(
+                                      'Failed to book',
+                                      style: TextStyle(color: Colors.white),
+                                    ),
+                          // Text(
+                          //   'Book Now',
+                            // style: TextStyle(color: Colors.white),     
+                          // ),
+                          onPressed: () {},
+                        );
                       },
-                      color: Colors.blue,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
                     ),
                   ),
                 ),
