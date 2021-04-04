@@ -40,7 +40,7 @@ class RouteGenerator {
         return MaterialPageRoute(
           builder: (_) => ChangeNotifierProvider.value(
             value: locator<PropertyViewModel>(),
-            child: PropertyScreen(),  
+            child: PropertyScreen(),
           ),
         );
     }

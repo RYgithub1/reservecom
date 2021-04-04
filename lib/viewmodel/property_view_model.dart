@@ -15,8 +15,14 @@ class PropertyViewModel extends ChangeNotifier {
   List<Property> get properties => [..._properties];
   // List<Property> get properties => _properties;
 
+  bool _isBooked = false;
+  bool get isBooked => _isBooked;
+  bool _isBookedDone = false;
+  bool get isBookedDone => _isBookedDone;
+
 
   Future<void> getPropertyInfo() async {
+    _isLoading = true;
     try {
       final response = await PropertyRepository.getPropertyInfo();
       List<dynamic> decodedList = json.decode(response.toString());  // [{}] to {}
@@ -32,19 +38,24 @@ class PropertyViewModel extends ChangeNotifier {
       _properties.forEach((prop) {
         print('comm02: ' + prop.ownerName + ':' + prop.ownerPhoneNumber);
       });
+      _isLoading = false;
 
     } catch (err) {
       rethrow;
     } finally {
       print('comm: getPropertyInfo(): finally');
+      notifyListeners();
     }
   }
 
 
   Future<String> getFutureValue() async {
-    await Future.delayed(Duration(seconds: 3));
+    _isBooked = true;
+    notifyListeners();
+    await Future.delayed(Duration(seconds: 2));
 
     try {
+      _isBookedDone = true;
       return Future.value('Booked');
 
       /// [snapshot.hasDataがfalse]
@@ -55,6 +66,9 @@ class PropertyViewModel extends ChangeNotifier {
 
     } catch (error) {
       return Future.error(error);
+    } finally {
+      print('comm: getFutureValue(): finally');
+      notifyListeners();
     }
   }
 }

@@ -9,7 +9,12 @@ import 'viewmodel/property_view_model.dart';
 Future<void> main() async {
   await DotEnv.load(fileName: ".env");
   await setupLocator();
-  runApp(MyApp());
+  runApp(
+    ChangeNotifierProvider<PropertyViewModel>(
+        create: (ctx) => PropertyViewModel(),
+        child: MyApp(),
+      ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -22,10 +27,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: ChangeNotifierProvider<PropertyViewModel>(
-        create: (ctx) => PropertyViewModel(),
-        child: HomeScreen(),
-      ),
+      home:  HomeScreen(),
     );
   }
 }

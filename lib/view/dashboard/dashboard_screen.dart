@@ -16,8 +16,6 @@ class DashboardScreen extends StatefulWidget {
 
 
 class _DashboardScreenState extends State<DashboardScreen> {
-  bool propertyList = true;  
-
   Future _getPropertyInfo;
   bool _isInit = true;
   @override
@@ -38,9 +36,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
     });
   }
 
-
   @override
   Widget build(BuildContext context) {
+    final _judgePVM = Provider.of<PropertyViewModel>(context, listen: false);
     return Scaffold(
       appBar: AppBar(
         leading: Container(
@@ -248,13 +246,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
                     /// [Property Tile]
                     Expanded(
-                      child: propertyList == false  
+                      child: _judgePVM.isLoading
                         ? Center(child: CircularProgressIndicator())
                         : Consumer<PropertyViewModel>(
                           builder: (context, propertyViewModel, child) {
                             return ListView.builder(
                               itemCount: propertyViewModel.properties.length,
-                              // itemCount: 4,
                               itemBuilder: (BuildContext context, int arrayNumber) {
                                 return PropertyTile(
                                   property: propertyViewModel.properties[arrayNumber],

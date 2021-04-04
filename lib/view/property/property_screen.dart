@@ -3,13 +3,19 @@ import 'package:provider/provider.dart';
 import 'package:reservecom/data/property.dart';
 import 'package:reservecom/viewmodel/property_view_model.dart';
 
-class PropertyScreen extends StatelessWidget {
-  final Property property;
-  PropertyScreen({@required this.property});
-  /// propertyが渡せていないからエラー
 
+class PropertyScreen extends StatefulWidget {
+  final Property property;
+  PropertyScreen({this.property});
+  @override
+  _PropertyScreenState createState() => _PropertyScreenState();
+}
+
+
+class _PropertyScreenState extends State<PropertyScreen> {
   @override
   Widget build(BuildContext context) {
+    final _propertyViewModel = Provider.of<PropertyViewModel>(context);
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -68,7 +74,7 @@ class PropertyScreen extends StatelessWidget {
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(32),
                     child: Image.network(
-                      property.propertyDetails.image,
+                      widget.property.propertyDetails.image,
                       fit: BoxFit.fill,
                     ),
                   ),
@@ -78,7 +84,7 @@ class PropertyScreen extends StatelessWidget {
                   padding: EdgeInsets.only(top: 8, bottom: 2),
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    property.propertyDetails.title,
+                    widget.property.propertyDetails.title,
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   ),
                 ),
@@ -89,7 +95,7 @@ class PropertyScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
                       Text(
-                        property.city,
+                        widget.property.city,
                         style: TextStyle(color: Colors.grey),
                       ),
                       Row(
@@ -98,11 +104,11 @@ class PropertyScreen extends StatelessWidget {
                             children: <Widget>[
                               Icon(Icons.star, color: Colors.yellow),
                               Text(
-                                property.rating.toString(),
+                                widget.property.rating.toString(),
                                 style: TextStyle(fontWeight: FontWeight.bold),
                               ),
                               Text(
-                                '(' + '${property.id*127}' + ' Reviews)',
+                                '(' + '${widget.property.id*127}' + ' Reviews)',
                                 style: TextStyle(color: Colors.grey),
                               ),
                             ],
@@ -122,7 +128,7 @@ class PropertyScreen extends StatelessWidget {
                         children: <Widget>[
                           Icon(Icons.king_bed_outlined, color: Colors.grey),
                           Text(
-                            property.propertyDetails.bedCount.toString(),
+                            widget.property.propertyDetails.bedCount.toString(),
                             style: TextStyle(fontWeight: FontWeight.bold),
                           ),
                         ],
@@ -132,7 +138,7 @@ class PropertyScreen extends StatelessWidget {
                         children: <Widget>[
                           Icon(Icons.bathtub_outlined, color: Colors.grey),
                           Text(
-                            property.propertyDetails.bathroomCount.toString(),
+                            widget.property.propertyDetails.bathroomCount.toString(),
                             style: TextStyle(fontWeight: FontWeight.bold),
                           ),
                         ],
@@ -142,7 +148,7 @@ class PropertyScreen extends StatelessWidget {
                         children: <Widget>[
                           Icon(Icons.local_laundry_service_outlined, color: Colors.grey),
                           Text(
-                            property.propertyDetails.laundryCount.toString(),
+                            widget.property.propertyDetails.laundryCount.toString(),
                             style: TextStyle(fontWeight: FontWeight.bold),
                           ),
                         ],
@@ -158,7 +164,7 @@ class PropertyScreen extends StatelessWidget {
                       style: TextStyle(color: Colors.grey, fontSize: 20),
                       children: <TextSpan>[
                         TextSpan(
-                          text: property.rentalPrice,
+                          text: widget.property.rentalPrice,
                           style: TextStyle(fontSize: 20, color: Colors.blue, fontWeight: FontWeight.bold),
                         ),
                         TextSpan(
@@ -184,7 +190,7 @@ class PropertyScreen extends StatelessWidget {
                 Container(
                   alignment: Alignment.centerLeft,
                   child: Text(
-                      property.propertyDetails.description,
+                      widget.property.propertyDetails.description,
                     style: TextStyle(fontSize: 12, color: Colors.grey),
                   ),
                 ),
@@ -205,7 +211,7 @@ class PropertyScreen extends StatelessWidget {
                     style: TextStyle(color: Colors.grey),
                   ),
                   subtitle: Text(
-                    property.ownerName,
+                    widget.property.ownerName,
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                   trailing: Row(
@@ -224,7 +230,7 @@ class PropertyScreen extends StatelessWidget {
                           ),
                           color: Colors.grey,
                           onPressed: () {
-                            print('comm: Chat with : ' + '${property.ownerName}');
+                            print('comm: Chat with : ' + '${widget.property.ownerName}');
                           },
                         ),
                       ),
@@ -241,7 +247,7 @@ class PropertyScreen extends StatelessWidget {
                           ),
                           color: Colors.white,
                           onPressed: () {
-                            print('comm: Call to : ' + '${property.ownerPhoneNumber}');
+                            print('comm: Call to : ' + '${widget.property.ownerPhoneNumber}');
                           },
                         ),
                       ),
@@ -256,44 +262,38 @@ class PropertyScreen extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Container(
                     width: double.infinity,
-                    child: FutureBuilder(  
-                      future: Provider.of<PropertyViewModel>(context, listen: false).getFutureValue(),
-                      builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
-                        return FlatButton(
+                    child: _propertyViewModel.isBooked == false
+                        ? FlatButton(
                           color: Colors.blue,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10),
                           ),
-                          child: snapshot.connectionState != ConnectionState.done
-                              ? Container(
-                                width: 40,
-                                height: 40,
-                                child: CircularProgressIndicator(
-                                  valueColor: const AlwaysStoppedAnimation<Color>(Colors.orange),
-                                ),
-                              )
-                              : snapshot.hasError
-                                  ? Text(
-                                    snapshot.error.toString(),
-                                    style: TextStyle(color: Colors.white),
-                                  )
-                                  : snapshot.hasData
-                                    ? Text(
-                                      snapshot.data,
-                                      style: TextStyle(color: Colors.white),
-                                    )
-                                    : Text(
-                                      'Failed to book',
-                                      style: TextStyle(color: Colors.white),
-                                    ),
-                          // Text(
-                          //   'Book Now',
-                            // style: TextStyle(color: Colors.white),     
-                          // ),
-                          onPressed: () {},
-                        );
-                      },
-                    ),
+                          child: Text('Book Now',style: TextStyle(color: Colors.white)),
+                          onPressed: () => _propertyViewModel.getFutureValue(),
+                        )
+                        : _propertyViewModel.isBookedDone == false
+                            ? Container(
+                              width: 40,
+                              height: 40,
+                              child: CircularProgressIndicator(
+                                valueColor: const AlwaysStoppedAnimation<Color>(Colors.orange),
+                              ),
+                            )
+                            : FlatButton(
+                              color: Colors.blue[200],
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Text('Booked',style: TextStyle(color: Colors.white)),
+                              onPressed: () {
+                                print('comm: Pressed booked');
+                                return null;
+                              },
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                              splashColor: Colors.transparent,
+                            ),
                   ),
                 ),
                 SizedBox(height: 20),
