@@ -20,6 +20,9 @@ class PropertyViewModel extends ChangeNotifier {
   bool _isBookedDone = false;
   bool get isBookedDone => _isBookedDone;
 
+  bool _reserved = false;
+  bool get reserved => _reserved;
+
 
   Future<void> getPropertyInfo() async {
     _isLoading = true;
