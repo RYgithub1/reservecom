@@ -16,8 +16,8 @@ class PropertyTile extends StatelessWidget {
       margin: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-            border: Border.all(color: Colors.grey),
-            borderRadius: BorderRadius.circular(20),
+        border: Border.all(color: Colors.grey),
+        borderRadius: BorderRadius.circular(20),
       ),
       child: InkWell(
         onTap: () {
@@ -29,14 +29,8 @@ class PropertyTile extends StatelessWidget {
         },
         child: Row(
           children: <Widget>[
-            Flexible(
-              flex: 1,
-              child: PropertyTileLeft(property: property),
-            ),
-            Flexible(
-              flex: 2,
-              child: PropertyTileRight(property: property),
-            ),
+            Flexible(flex: 1, child: PropertyTileLeft(property: property)),
+            Flexible(flex: 2, child: PropertyTileRight(property: property)),
           ],
         ),
       ),

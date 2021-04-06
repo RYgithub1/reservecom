@@ -15,13 +15,8 @@ class PropertyViewModel extends ChangeNotifier {
   List<Property> get properties => [..._properties];
   // List<Property> get properties => _properties;
 
-  bool _isBooked = false;
-  bool get isBooked => _isBooked;
-  bool _isBookedDone = false;
+  bool _isBookedDone = false;  // VMだと共通化 -> 個別ModelClassのValuable
   bool get isBookedDone => _isBookedDone;
-
-  bool _reserved = false;
-  bool get reserved => _reserved;
 
 
   Future<void> getPropertyInfo() async {
@@ -30,7 +25,7 @@ class PropertyViewModel extends ChangeNotifier {
       final response = await PropertyRepository.getPropertyInfo();
       List<dynamic> decodedList = json.decode(response.toString());  // [{}] to {}
       final List<Property> parsedList = List<Property>.from(
-        decodedList.map((emon) => Property.fromJson(emon)),  // e: Parameter type: 'Map<String, dynamic>'
+        decodedList.map((emon) => Property.fromJson(emon)),  // Map<String, dynamic> emon
       );
       parsedList.forEach((prop) {
         print('comm01: ' + prop.ownerName + ':' + prop.ownerPhoneNumber);
@@ -52,26 +47,15 @@ class PropertyViewModel extends ChangeNotifier {
   }
 
 
-  Future<String> getFutureValue() async {
-    _isBooked = true;
+  Future<void> getFutureValue() async {
     notifyListeners();
     await Future.delayed(Duration(seconds: 2));
+    _isBookedDone = true;
+    notifyListeners();
+  }
 
-    try {
-      _isBookedDone = true;
-      return Future.value('Booked');
 
-      /// [snapshot.hasDataがfalse]
-      // return Future.value(null);
-
-      /// [snapshot.hadErrorがtrue]
-      // throw Exception('Failed to book');
-
-    } catch (error) {
-      return Future.error(error);
-    } finally {
-      print('comm: getFutureValue(): finally');
-      notifyListeners();
-    }
+  void initializeIsBookedDone() {
+    _isBookedDone = false;
   }
 }

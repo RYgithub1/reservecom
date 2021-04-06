@@ -9,7 +9,7 @@ class Property {
   PropertyDetails propertyDetails;
   List<Facilities> facilities;
 
-  bool reserved;
+  bool isReserved;
 
   Property({
     this.id,
@@ -21,7 +21,7 @@ class Property {
     this.ownerPhoneNumber,
     this.propertyDetails,
     this.facilities,
-    this.reserved,
+    this.isReserved,
   });
 
   Property.fromJson(Map<String, dynamic> json) {

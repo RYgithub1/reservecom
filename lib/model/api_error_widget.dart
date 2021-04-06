@@ -21,6 +21,7 @@ class ApiErrorWidget extends StatelessWidget {
           Text('something wrong', textAlign: TextAlign.center),
           RaisedButton(
             onPressed: tryAgain,
+            // onPressed: () => tryAgain,
             child: Text('TRY AGAIN', textAlign: TextAlign.center),
             textColor: Colors.white,
             color: Colors.blue,

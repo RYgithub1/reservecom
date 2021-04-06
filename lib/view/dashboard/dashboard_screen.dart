@@ -253,8 +253,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
                             return ListView.builder(
                               itemCount: propertyViewModel.properties.length,
                               itemBuilder: (BuildContext context, int arrayNumber) {
-                                if (propertyViewModel.properties[arrayNumber].reserved == null) {
-                                  propertyViewModel.properties[arrayNumber].reserved = false;
+                                if (propertyViewModel.properties[arrayNumber].isReserved == null) {
+                                  propertyViewModel.properties[arrayNumber].isReserved = false;
                                 }
                                 return PropertyTile(
                                   property: propertyViewModel.properties[arrayNumber],

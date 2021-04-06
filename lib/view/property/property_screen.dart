@@ -13,6 +13,19 @@ class PropertyScreen extends StatefulWidget {
 
 
 class _PropertyScreenState extends State<PropertyScreen> {
+  bool _isInit = true;
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    // If false in Array, then Initialize isBookedDone.
+    if (widget.property.isReserved == false) {
+      if (_isInit) {
+        Provider.of<PropertyViewModel>(context, listen: false).initializeIsBookedDone();
+      }
+      _isInit = false;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final _propertyViewModel = Provider.of<PropertyViewModel>(context);
@@ -28,14 +41,9 @@ class _PropertyScreenState extends State<PropertyScreen> {
             child: Padding(
               padding: const EdgeInsets.only(left: 4),
               child: IconButton(
-                icon: Icon(
-                  Icons.arrow_back_ios,
-                  size: 20,
-                ),
+                icon: Icon(Icons.arrow_back_ios, size: 20),
                 color: Colors.grey,
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
+                onPressed: () => Navigator.of(context).pop(),
               ),
             ),
           ),
@@ -47,14 +55,9 @@ class _PropertyScreenState extends State<PropertyScreen> {
                 borderRadius: BorderRadius.circular(12),
               ),
               child: IconButton(
-                icon: Icon(
-                  Icons.bookmark,
-                  size: 20,
-                ),
+                icon: Icon(Icons.bookmark, size: 20),
                 color: Colors.grey,
-                onPressed: () {
-                  print('comm: Pushed btn: Favorite one');
-                },
+                onPressed: () => print('comm: Pushed btn: Favorite one'),
               ),
             ),
           ],
@@ -190,7 +193,7 @@ class _PropertyScreenState extends State<PropertyScreen> {
                 Container(
                   alignment: Alignment.centerLeft,
                   child: Text(
-                      widget.property.propertyDetails.description,
+                    widget.property.propertyDetails.description,
                     style: TextStyle(fontSize: 12, color: Colors.grey),
                   ),
                 ),
@@ -224,10 +227,7 @@ class _PropertyScreenState extends State<PropertyScreen> {
                           borderRadius: BorderRadius.circular(16),
                         ),
                         child: IconButton(
-                          icon: Icon(
-                            Icons.chat,
-                            size: 20,
-                          ),
+                          icon: Icon(Icons.chat, size: 20),
                           color: Colors.grey,
                           onPressed: () {
                             print('comm: Chat with : ' + '${widget.property.ownerName}');
@@ -241,10 +241,7 @@ class _PropertyScreenState extends State<PropertyScreen> {
                           color: Colors.green,
                         ),
                         child: IconButton(
-                          icon: Icon(
-                            Icons.call,
-                            size: 20,
-                          ),
+                          icon: Icon(Icons.call, size: 20),
                           color: Colors.white,
                           onPressed: () {
                             print('comm: Call to : ' + '${widget.property.ownerPhoneNumber}');
@@ -253,25 +250,26 @@ class _PropertyScreenState extends State<PropertyScreen> {
                       ),
                     ],
                   ),
-                  onTap: () {
-                    print('comm: Owner\'s infomation');
-                  },
+                  onTap: () => print('comm: Owner\'s infomation'),
                 ),
 
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Container(
                     width: double.infinity,
-                    child: _propertyViewModel.isBooked == false
+                    child: widget.property.isReserved == false  // VM共通ゆえ個別にvaluableを持たせる
                         ? FlatButton(
                           color: Colors.blue,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10),
                           ),
                           child: Text('Book Now',style: TextStyle(color: Colors.white)),
-                          onPressed: () => _propertyViewModel.getFutureValue(),
+                          onPressed: () {
+                            widget.property.isReserved = true;
+                            return _propertyViewModel.getFutureValue();
+                          },
                         )
-                        : _propertyViewModel.isBookedDone == false
+                        :  _propertyViewModel.isBookedDone == false
                             ? Container(
                               width: 40,
                               height: 40,
@@ -285,10 +283,7 @@ class _PropertyScreenState extends State<PropertyScreen> {
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               child: Text('Booked',style: TextStyle(color: Colors.white)),
-                              onPressed: () {
-                                print('comm: Pressed booked');
-                                return null;
-                              },
+                              onPressed: () => null,
                               focusColor: Colors.transparent,
                               hoverColor: Colors.transparent,
                               highlightColor: Colors.transparent,

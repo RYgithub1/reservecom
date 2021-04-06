@@ -4,7 +4,6 @@ import 'price_range_graph.dart';
 import 'sort_by_constraint.dart';
 
 class SearchBottomSheet extends StatefulWidget {
-  // SearchBottomSheet({Key key}) : super(key: key);
   @override
   _SearchBottomSheetState createState() => _SearchBottomSheetState();
 }
@@ -269,7 +268,7 @@ class _SearchBottomSheetState extends State<SearchBottomSheet> {
                   'Apply & Search',
                   style: TextStyle(color: Colors.white),
                 ),
-                onPressed: () {  
+                onPressed: () {
                 },
                 color: Colors.blue,
                 shape: RoundedRectangleBorder(
