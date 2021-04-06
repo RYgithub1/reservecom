@@ -7,33 +7,33 @@ class NavigationService {
     return navigatorKey.currentState.pushNamed(routeName, arguments: arguments);
   }
 
-  pop(value) {
+  void pop(value) {
     return navigatorKey.currentState.pop(value);
   }
 
-  goBack() {
+  void goBack() {
     return navigatorKey.currentState.pop();
   }
 
-  popUntil(String desiredRoute) {
+  void popUntil(String desiredRoute) {
     return navigatorKey.currentState.popUntil((route) {
       return route.settings.name == desiredRoute;
     });
   }
 
-  pushNamedAndRemoveUntil(route, popToInitial) {
+  Future pushNamedAndRemoveUntil(route, popToInitial) {
     return navigatorKey.currentState.pushNamedAndRemoveUntil(
       route,
       (Route<dynamic> route) => popToInitial,
     );
   }
 
-  pushReplacementNamedWithArgs(String desiredRoute, {dynamic arguments}) {
+  Future pushReplacementNamedWithArgs(String desiredRoute, {dynamic arguments}) {
     return navigatorKey.currentState
         .pushReplacementNamed(desiredRoute, arguments: arguments);
   }
 
-  pushReplacementNamed(String desiredRoute, {dynamic arguments}) {
+  Future pushReplacementNamed(String desiredRoute, {dynamic arguments}) {
     return navigatorKey.currentState
         .pushReplacementNamed(desiredRoute, arguments: arguments);
   }
@@ -42,7 +42,7 @@ class NavigationService {
     return navigatorKey.currentState.context;
   }
 
-  popDialog(value) {
+  void popDialog(value) {
     return navigatorKey.currentState.pop(value);
   }
 }
