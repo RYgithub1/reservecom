@@ -213,32 +213,50 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         children: <Widget>[
                           AccommodationType(
                             accommodationTypeText: '  Building  ',
-                            accommodationTypeIcon: Icon(Icons.fire_extinguisher, color: Colors.blue),
+                            accommodationTypeIcon: ImageIcon(
+                              AssetImage('assets/icons/building.png'),
+                              color: Colors.blue,
+                            ),
                           ),
                           SizedBox(width:5.0),
                           AccommodationType(
                             accommodationTypeText: '    Room    ',
-                            accommodationTypeIcon: Icon(Icons.lightbulb, color: Colors.blue),
+                            accommodationTypeIcon: ImageIcon(
+                              AssetImage('assets/icons/room.png'),
+                              color: Colors.blue,
+                            ),
                           ),
                           SizedBox(width:5.0),
                           AccommodationType(
                             accommodationTypeText: '   House   ',
-                            accommodationTypeIcon: Icon(Icons.house, color: Colors.blue),
+                            accommodationTypeIcon: ImageIcon(
+                              AssetImage('assets/icons/home.png'),
+                              color: Colors.blue,
+                            ),
                           ),
                           SizedBox(width:5.0),
                           AccommodationType(
                             accommodationTypeText: 'Apartment',
-                            accommodationTypeIcon: Icon(Icons.apartment, color: Colors.blue),
+                            accommodationTypeIcon: ImageIcon(
+                              AssetImage('assets/icons/apartment.png'),
+                              color: Colors.blue,
+                            ),
                           ),
                           SizedBox(width:5.0),
                           AccommodationType(
                             accommodationTypeText: '   Garden   ',
-                            accommodationTypeIcon: Icon(Icons.nature, color: Colors.blue),
+                            accommodationTypeIcon: ImageIcon(
+                              AssetImage('assets/icons/park.png'),
+                              color: Colors.blue,
+                            ),
                           ),
                           SizedBox(width:5.0),
                           AccommodationType(
                             accommodationTypeText: '  Parking  ',
-                            accommodationTypeIcon: Icon(Icons.local_parking, color: Colors.blue),
+                            accommodationTypeIcon: ImageIcon(
+                              AssetImage('assets/icons/parking.png'),
+                              color: Colors.blue,
+                            ),
                           ),
                         ],
                       ),

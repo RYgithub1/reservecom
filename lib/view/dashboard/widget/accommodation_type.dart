@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 @override
 class AccommodationType extends StatelessWidget {
   final String accommodationTypeText;
-  final Icon accommodationTypeIcon;
+  final ImageIcon accommodationTypeIcon;
   AccommodationType({
     @required this.accommodationTypeText,
     @required this.accommodationTypeIcon,

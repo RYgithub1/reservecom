@@ -32,8 +32,11 @@ flutter:
     - .env
     - assets/images/stevejobs.jpeg
     - assets/images/stevewozniak.jpeg
+    - assets/icons/apartment.png
     - assets/icons/building.png
+    - assets/icons/home.png
     - assets/icons/park.png
+    - assets/icons/parking.png
     - assets/icons/room.png
   # fonts:
   #   - family: Schyler
