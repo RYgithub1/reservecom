@@ -39,6 +39,7 @@ flutter:
     - assets/icons/park.png
     - assets/icons/parking.png
     - assets/icons/room.png
+    - assets/icons/bell.svg
   # fonts:
   #   - family: Schyler
   #     fonts:

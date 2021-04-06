@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:provider/provider.dart';
-import 'package:reservecom/model/api_error_widget.dart';
 
 import '../../viewmodel/property_view_model.dart';
 import 'widget/accommodation_type.dart';
@@ -79,9 +79,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
               borderRadius: BorderRadius.circular(12),
             ),
             child: IconButton(
-              icon: Icon(
-                Icons.notifications_none,
-                size: 20,
+              icon: SvgPicture.asset(
+                'assets/icons/bell.svg',
+                semanticsLabel: 'notification',
+                width: 20,
+                height: 20,
               ),
               color: Colors.blue,
               onPressed: () {
