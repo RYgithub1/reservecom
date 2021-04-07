@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:reservecom/routing/service_locator.dart';
 
 import 'api_manager.dart';
 

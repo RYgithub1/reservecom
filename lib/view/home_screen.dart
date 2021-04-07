@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'bookmark/bookmark_screen.dart';
 import 'chat/chat_screen.dart';
 import 'dashboard/dashboard_screen.dart';
-import 'favorite/favorite_screen.dart';
 import 'reserve/reserve_screen.dart';
 import 'setup/setup_screen.dart';
 
@@ -21,7 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
       DashboardScreen(),
       ReserveScreen(),
       ChatScreen(),
-      FavoriteScreen(),
+      BookmarkScreen(),
       SetupScreen(),
     ];
   }
@@ -60,7 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.bookmark_border),
-              label: 'Favorite',
+              label: 'Bookmark',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.settings),

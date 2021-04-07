@@ -57,7 +57,7 @@ class _PropertyScreenState extends State<PropertyScreen> {
               child: IconButton(
                 icon: Icon(Icons.bookmark, size: 20),
                 color: Colors.grey,
-                onPressed: () => print('comm: Pushed btn: Favorite one'),
+                onPressed: () => print('comm: Pushed Bookmark'),
               ),
             ),
           ],

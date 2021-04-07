@@ -7,11 +7,12 @@ import 'view/home_screen.dart';
 import 'viewmodel/property_view_model.dart';
 
 Future<void> main() async {
+  // WidgetsFlutterBinding.ensureInitialized();
   await DotEnv.load(fileName: ".env");
   await setupLocator();
   runApp(
     ChangeNotifierProvider<PropertyViewModel>(
-        create: (ctx) => PropertyViewModel(),
+        create: (_) => PropertyViewModel(),
         child: MyApp(),
       ),
   );
