@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
 
-class ReserveScreen extends StatelessWidget {
-  const ReserveScreen({Key key}) : super(key: key);
+class ChartScreen extends StatelessWidget {
+  const ChartScreen({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('RESERVE'),
+        title: Text('Bookmark & RESERVE'),
       ),
       body: Center(child: Text('coming soon')),
     );

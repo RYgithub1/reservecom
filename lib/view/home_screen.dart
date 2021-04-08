@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'bookmark/bookmark_screen.dart';
+import 'chart/chart_screen.dart';
 import 'chat/chat_screen.dart';
 import 'dashboard/dashboard_screen.dart';
-import 'reserve/reserve_screen.dart';
 import 'setup/setup_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -19,9 +18,8 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
     _pages = <Widget>[
       DashboardScreen(),
-      ReserveScreen(),
+      ChartScreen(),
       ChatScreen(),
-      BookmarkScreen(),
       SetupScreen(),
     ];
   }
@@ -52,15 +50,11 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.notes),
-              label: 'Reserve',
+              label: 'Chart',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.mail_outline),
               label: 'Chat',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.bookmark_border),
-              label: 'Bookmark',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.settings),
