@@ -30,8 +30,8 @@ class PropertyRepository {
     }
 
     final SharedPreferences _prefs = await SharedPreferences.getInstance();
-    _prefs.setBool('${property.id}', property.isMarked); /// 一発目true挿入、登録
-    return property.isMarked;    /// 一発目true返す
+    _prefs.setBool('${property.id}', property.isMarked);
+    return property.isMarked;
   }
 
 
@@ -48,23 +48,10 @@ class PropertyRepository {
   }
 
 
-
-          
   Future<bool> getMarkedProperty(Property prop) async {
-    // final int _num = (prop.id - 1);  
-    // final int _num = (prop.id - 2);  
-    final int _num = prop.id;  
-    // if (property.isMarked == false) {
-    //   property.isMarked = true;
-    // } else {
-    //   property.isMarked = false;
-    // }
-
+    final int _num = prop.id;
     final SharedPreferences _prefs = await SharedPreferences.getInstance();
-    // prefs.remove('$_prefsNum');
-
     return _prefs.getBool('$_num') ?? false;
-    // return prefs.getBool('$_prefsNum') ?? true;
   }
 
 

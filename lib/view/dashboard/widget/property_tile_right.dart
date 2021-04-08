@@ -1,7 +1,7 @@
-
 import 'package:flutter/material.dart';
 
 import '../../../data/property.dart';
+
 
 /// Widget [PropertyTileRight] : The PropertyTileRight is used for Property Tile
 class PropertyTileRight extends StatelessWidget {

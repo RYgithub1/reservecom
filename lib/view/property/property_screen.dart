@@ -29,8 +29,7 @@ class _PropertyScreenState extends State<PropertyScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // final _propertyViewModel = Provider.of<PropertyViewModel>(context, listen: false);
-    final _propertyViewModel = Provider.of<PropertyViewModel>(context);    
+    final _propertyViewModel = Provider.of<PropertyViewModel>(context);
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -56,8 +55,6 @@ class _PropertyScreenState extends State<PropertyScreen> {
                 border: Border.all(color: Colors.grey),
                 borderRadius: BorderRadius.circular(12),
               ),
-                  
-                  
               child: _propertyViewModel.markedPropertyBools[(widget.property.id - 1)] == false
                   ? IconButton(
                     icon: Icon(Icons.bookmark_border),

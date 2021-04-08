@@ -29,6 +29,7 @@ class PropertyViewModel extends ChangeNotifier {
 
   /// [Property Screen --------------------------]
   Future<void> getPropertyInfo() async {
+    /// [ > PropertyInfo ]
     _isLoading = true;
     try {
       final response = await PropertyRepository.getPropertyInfo();
@@ -50,17 +51,13 @@ class PropertyViewModel extends ChangeNotifier {
       rethrow;
     } finally {
       print('comm: Finish getPropertyInfo(): finally');
-      // notifyListeners();
     }
 
-
-    /// [MarkedProperty]
+    /// [ > MarkedProperty ]
     _properties.forEach((prop) async {
       _markedPropertyBools[(prop.id - 1)] = await _propertyRepository.getMarkedProperty(prop);
-      // _markedPropertyBools[(prop.id - 2)] = await _propertyRepository.getMarkedProperty(prop);
       notifyListeners();
     });
-    // notifyListeners();
   }
 
 
@@ -71,6 +68,7 @@ class PropertyViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
+
   void initializeIsBookedDone() {
     _isBookedDone = false;
   }
@@ -80,11 +78,10 @@ class PropertyViewModel extends ChangeNotifier {
   /// [Bookmark ------------------------]
   Future<void> markIt(Property property) async {
     if (property.isMarked == null) {
-      property.isMarked = _markedPropertyBools[(property.id - 1)];  // if null -> 最初は初期値false
+      property.isMarked = _markedPropertyBools[(property.id - 1)];  // if null -> 初期値false
     }
-
-    property.isMarked = await _propertyRepository.markIt(property);  // 一発目false送りtrue
-    _markedPropertyBools[(property.id - 1)] = property.isMarked;  /// _markedPropertyBools該当がtrue
+    property.isMarked = await _propertyRepository.markIt(property);  // 一発目false送り,true返る
+    _markedPropertyBools[(property.id - 1)] = property.isMarked;  /// _markedPropertyBoolsがtrue
     notifyListeners();
   }
 
@@ -95,15 +92,6 @@ class PropertyViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
-
-
-
-  // Future<void> getMarkedProperty(List<Property> properties) async {
-  //   properties.forEach((prop) async {
-  //     _markedPropertyBools[(prop.id - 1)] = await _propertyRepository.getMarkedProperty(prop);
-  //   });
-  //   notifyListeners();
-  // }
 
   Future<void> removeMarkedProperty() async {
     await _propertyRepository.removeMarkedProperty();
