@@ -57,7 +57,8 @@ class _PropertyScreenState extends State<PropertyScreen> {
               child: IconButton(
                 icon: Icon(Icons.bookmark, size: 20),
                 color: Colors.grey,
-                onPressed: () => print('comm: Pushed Bookmark'),
+                // onPressed: () => print('comm: Pushed Bookmark'),
+                onPressed: () => _markIt(context),
               ),
             ),
           ],
@@ -298,5 +299,11 @@ class _PropertyScreenState extends State<PropertyScreen> {
         ),
       ),
     );
+  }
+
+
+  _markIt(BuildContext context) async {
+    final propertyViewModel = Provider.of<PropertyViewModel>(context, listen: false);
+    await propertyViewModel.markIt(widget.property);
   }
 }

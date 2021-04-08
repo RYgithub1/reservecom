@@ -1,8 +1,18 @@
 import 'package:dio/dio.dart';
+import 'package:uuid/uuid.dart';
 
+import '../data/mark.dart';
+import '../data/property.dart';
+import '../data/user.dart';
 import 'api_manager.dart';
+import 'database_manager.dart';
+
+
 
 class PropertyRepository {
+  final DatabaseManager _databaseManager = DatabaseManager();
+
+  /// [API ------------------------------------]
   // final ApiManager apiManager = locator<ApiManager>();
   static final ApiManager apiManager = ApiManager();
 
@@ -13,5 +23,17 @@ class PropertyRepository {
       propertyEndPoint,
       options: RequestOptions(baseUrl: 'https://gist.githubusercontent.com/manas-raj-shrestha')
     );
+  }
+
+
+  /// [BookMark ------------------------------------]
+  Future<void> markIt(Property property, User currentUser) async {
+    final _mark = Mark(
+      markId: int.parse('${Uuid().v1()}'),
+      propertyId: property.id,
+      markUserId: currentUser.userId,
+      markDateTime: DateTime.now(),
+    );
+    await _databaseManager.markIt(_mark);
   }
 }

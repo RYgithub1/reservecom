@@ -3,11 +3,15 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 
 import '../data/property.dart';
+import '../data/user.dart';
 import '../model/property_repository.dart';
+import '../model/user_repository.dart';
 
 
 
 class PropertyViewModel extends ChangeNotifier {
+  final PropertyRepository _propertyRepository = PropertyRepository();
+
   bool _isLoading = false;
   bool get isLoading => _isLoading;
 
@@ -18,7 +22,10 @@ class PropertyViewModel extends ChangeNotifier {
   bool _isBookedDone = false;  // VMだと共通化 -> 個別ModelClassのValuable
   bool get isBookedDone => _isBookedDone;
 
+  User get currentUser => UserRepository.currentUser;
 
+
+  /// [Property Screen --------------------------]
   Future<void> getPropertyInfo() async {
     _isLoading = true;
     try {
@@ -57,5 +64,13 @@ class PropertyViewModel extends ChangeNotifier {
 
   void initializeIsBookedDone() {
     _isBookedDone = false;
+  }
+
+
+
+  /// [BookMark ------------------------]
+  Future<void> markIt(Property property) async {
+    await _propertyRepository.markIt(property, currentUser);
+    notifyListeners();  // setPrefsの通知
   }
 }
