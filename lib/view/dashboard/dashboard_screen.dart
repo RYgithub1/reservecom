@@ -85,7 +85,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 height: 20.0,
               ),
               color: Colors.blue,
-              onPressed: () => _removeMarkedProperty(context),
+              onPressed: () {
+                print('comm: Pushed _removeMarkedProperty()');
+                return _removeMarkedProperty(context);
+              },
             ),
           ),
         ],

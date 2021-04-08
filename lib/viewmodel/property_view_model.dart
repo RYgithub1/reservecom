@@ -20,7 +20,6 @@ class PropertyViewModel extends ChangeNotifier {
   bool _isBookedDone = false;  // VMだと共通化 -> 個別ModelClassのValuable
   bool get isBookedDone => _isBookedDone;
 
-  // final List<bool> _markedPropertyBools = [
   List<bool> _markedPropertyBools = [
     false, false, false, false,
     false, false, false, false,
@@ -37,34 +36,31 @@ class PropertyViewModel extends ChangeNotifier {
       final List<Property> parsedList = List<Property>.from(
         decodedList.map((emon) => Property.fromJson(emon)),  // Map<String, dynamic> emon
       );
-      parsedList.forEach((prop) {
-        print('comm01: ' + prop.ownerName + ':' + prop.ownerPhoneNumber);
-      });
-
+      // parsedList.forEach((prop) {
+      //   print('comm01: ' + prop.ownerName + ':' + prop.ownerPhoneNumber);
+      // });
       _properties.clear();
       _properties.addAll(parsedList);
-      _properties.forEach((prop) {
-        print('comm02: ' + prop.ownerName + ':' + prop.ownerPhoneNumber);
-      });
+      // _properties.forEach((prop) {
+      //   print('comm02: ' + prop.ownerName + ':' + prop.ownerPhoneNumber);
+      // });
       _isLoading = false;
 
     } catch (err) {
       rethrow;
     } finally {
-      print('comm: getPropertyInfo(): finally');
+      print('comm: Finish getPropertyInfo(): finally');
       // notifyListeners();
     }
 
 
     /// [MarkedProperty]
-    // await getMarkedProperty(_properties);
     _properties.forEach((prop) async {
       _markedPropertyBools[(prop.id - 1)] = await _propertyRepository.getMarkedProperty(prop);
-      // await Future.delayed(Duration(seconds: 1));
-      // Future.delayed(Duration(seconds: 1));
-      // notifyListeners();
+      // _markedPropertyBools[(prop.id - 2)] = await _propertyRepository.getMarkedProperty(prop);
+      notifyListeners();
     });
-    notifyListeners();
+    // notifyListeners();
   }
 
 

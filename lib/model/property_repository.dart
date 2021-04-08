@@ -51,7 +51,9 @@ class PropertyRepository {
 
           
   Future<bool> getMarkedProperty(Property prop) async {
-    final int _num = (prop.id - 1);
+    // final int _num = (prop.id - 1);  
+    // final int _num = (prop.id - 2);  
+    final int _num = prop.id;  
     // if (property.isMarked == false) {
     //   property.isMarked = true;
     // } else {
