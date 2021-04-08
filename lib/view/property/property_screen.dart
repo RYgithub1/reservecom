@@ -57,6 +57,7 @@ class _PropertyScreenState extends State<PropertyScreen> {
                 borderRadius: BorderRadius.circular(12),
               ),
                   
+                  
               child: _propertyViewModel.markedPropertyBools[(widget.property.id - 1)] == false
                   ? IconButton(
                     icon: Icon(Icons.bookmark_border),

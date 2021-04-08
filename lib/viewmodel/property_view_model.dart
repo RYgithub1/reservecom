@@ -3,9 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 
 import '../data/property.dart';
-import '../data/user.dart';
 import '../model/property_repository.dart';
-import '../model/user_repository.dart';
 
 
 
@@ -22,8 +20,8 @@ class PropertyViewModel extends ChangeNotifier {
   bool _isBookedDone = false;  // VMだと共通化 -> 個別ModelClassのValuable
   bool get isBookedDone => _isBookedDone;
 
-  User get currentUser => UserRepository.currentUser;
-  final List<bool> _markedPropertyBools = [
+  // final List<bool> _markedPropertyBools = [
+  List<bool> _markedPropertyBools = [
     false, false, false, false,
     false, false, false, false,
   ];
@@ -54,8 +52,19 @@ class PropertyViewModel extends ChangeNotifier {
       rethrow;
     } finally {
       print('comm: getPropertyInfo(): finally');
-      notifyListeners();
+      // notifyListeners();
     }
+
+
+    /// [MarkedProperty]
+    // await getMarkedProperty(_properties);
+    _properties.forEach((prop) async {
+      _markedPropertyBools[(prop.id - 1)] = await _propertyRepository.getMarkedProperty(prop);
+      // await Future.delayed(Duration(seconds: 1));
+      // Future.delayed(Duration(seconds: 1));
+      // notifyListeners();
+    });
+    notifyListeners();
   }
 
 
@@ -69,6 +78,7 @@ class PropertyViewModel extends ChangeNotifier {
   void initializeIsBookedDone() {
     _isBookedDone = false;
   }
+
 
 
   /// [Bookmark ------------------------]
@@ -86,6 +96,25 @@ class PropertyViewModel extends ChangeNotifier {
   Future<void> unmarkIt(Property property) async {
     property.isMarked = await _propertyRepository.unmarkIt(property);
     _markedPropertyBools[(property.id - 1)] = property.isMarked;
+    notifyListeners();
+  }
+
+
+
+
+  // Future<void> getMarkedProperty(List<Property> properties) async {
+  //   properties.forEach((prop) async {
+  //     _markedPropertyBools[(prop.id - 1)] = await _propertyRepository.getMarkedProperty(prop);
+  //   });
+  //   notifyListeners();
+  // }
+
+  Future<void> removeMarkedProperty() async {
+    await _propertyRepository.removeMarkedProperty();
+    _markedPropertyBools = [
+      false, false, false, false,
+      false, false, false, false,
+    ];
     notifyListeners();
   }
 }

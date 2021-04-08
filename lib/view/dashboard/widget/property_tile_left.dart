@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../../data/property.dart';
+import '../../../viewmodel/property_view_model.dart';
+
 
 /// Widget [PropertyTileLeft] : The PropertyTileLeft is used for Property Tile
 class PropertyTileLeft extends StatelessWidget {
@@ -23,19 +26,29 @@ class PropertyTileLeft extends StatelessWidget {
             ),
           ),
         ),
-        Container(
-          margin: const EdgeInsets.all(6),
-          padding: const EdgeInsets.all(4),
-          decoration: BoxDecoration(
-            border: Border.all(color: Colors.grey),
-            borderRadius: BorderRadius.circular(8),
-            color: Colors.white.withOpacity(0.5),
-          ),
-          child: const Icon(
-            Icons.bookmark,
-            size: 16,
-            color: Colors.white,
-          ),
+        Consumer<PropertyViewModel>(
+          builder: (_, _propertyViewModel, child) {
+            return Container(
+              margin: const EdgeInsets.all(6),
+              padding: const EdgeInsets.all(4),
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.grey),
+                borderRadius: BorderRadius.circular(8),
+                color: Colors.white.withOpacity(0.5),
+              ),
+              child: _propertyViewModel.markedPropertyBools[(property.id - 1)] == false
+                  ? const Icon(
+                    Icons.bookmark_border,
+                    size: 16,
+                    color: Colors.white,
+                  )
+                  : const Icon(
+                    Icons.bookmark,
+                    size: 16,
+                    color: Colors.orange,
+                  ),
+            );
+          }
         ),
       ],
     );

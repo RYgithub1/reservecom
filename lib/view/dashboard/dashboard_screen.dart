@@ -8,6 +8,7 @@ import 'widget/accommodation_type.dart';
 import 'widget/property_tile.dart';
 import 'widget/search_bottom_sheet.dart';
 
+
 class DashboardScreen extends StatefulWidget {
   @override
   _DashboardScreenState createState() => _DashboardScreenState();
@@ -80,12 +81,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
             child: IconButton(
               icon: SvgPicture.asset(
                 'assets/icons/bell.svg',
-                semanticsLabel: 'notification',
-                width: 20,
-                height: 20,
+                width: 20.0,
+                height: 20.0,
               ),
               color: Colors.blue,
-              onPressed: () => print('comm: Notification'),
+              onPressed: () => _removeMarkedProperty(context),
             ),
           ),
         ],
@@ -286,5 +286,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
         }
       ),
     );
+  }
+
+
+
+  Future<void> _removeMarkedProperty(BuildContext context) async {
+    final _propertyViewModel = Provider.of<PropertyViewModel>(context, listen: false);
+    await _propertyViewModel.removeMarkedProperty();
   }
 }
