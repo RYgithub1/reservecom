@@ -66,8 +66,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
             ),
             Text(
               'Steve Jobs',
-              style:
-                  TextStyle(fontSize: 16, color: Colors.black, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 16, color: Colors.black, fontWeight: FontWeight.bold),
             ),
           ],
         ),
@@ -86,9 +85,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 height: 20,
               ),
               color: Colors.blue,
-              onPressed: () {
-                print('comm: Notification');
-              },
+              onPressed: () => print('comm: Notification'),
             ),
           ),
         ],
@@ -109,7 +106,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 : Column(
                   children: <Widget>[
 
-                    /// [Theme Text]
+                    /// [Theme Text ==========================]
                     Container(
                       margin: const EdgeInsets.symmetric(horizontal: 12),
                       alignment: Alignment.centerLeft,
@@ -143,7 +140,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       ),
                     ),
 
-                    /// [Search Item]
+                    /// [Search Item ==========================]
                     Row(
                       children: <Widget>[
                         Expanded(
@@ -208,7 +205,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       ],
                     ),
 
-                    /// [Accommodation Type]
+                    /// [Accommodation Type ==========================]
                     SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
                       child: Row(
@@ -264,7 +261,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       ),
                     ),
 
-                    /// [Property Tile]
+                    /// [Property Tile ==========================]
                     Expanded(
                       child: _judgePVM.isLoading
                         ? Center(child: CircularProgressIndicator())
@@ -272,12 +269,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
                           builder: (context, propertyViewModel, child) {
                             return ListView.builder(
                               itemCount: propertyViewModel.properties.length,
-                              itemBuilder: (BuildContext context, int arrayNumber) {
-                                if (propertyViewModel.properties[arrayNumber].isReserved == null) {
-                                  propertyViewModel.properties[arrayNumber].isReserved = false;
+                              itemBuilder: (BuildContext context, int _arrayNumber) {
+                                if (propertyViewModel.properties[_arrayNumber].isReserved == null) {
+                                  propertyViewModel.properties[_arrayNumber].isReserved = false;
                                 }
                                 return PropertyTile(
-                                  property: propertyViewModel.properties[arrayNumber],
+                                  property: propertyViewModel.properties[_arrayNumber],
                                 );
                               },
                             );

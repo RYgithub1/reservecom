@@ -23,6 +23,11 @@ class PropertyViewModel extends ChangeNotifier {
   bool get isBookedDone => _isBookedDone;
 
   User get currentUser => UserRepository.currentUser;
+  final List<bool> _markedPropertyBools = [
+    false, false, false, false,
+    false, false, false, false,
+  ];
+  List<bool> get markedPropertyBools => _markedPropertyBools;
 
 
   /// [Property Screen --------------------------]
@@ -61,16 +66,26 @@ class PropertyViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
-
   void initializeIsBookedDone() {
     _isBookedDone = false;
   }
 
 
-
-  /// [BookMark ------------------------]
+  /// [Bookmark ------------------------]
   Future<void> markIt(Property property) async {
-    await _propertyRepository.markIt(property, currentUser);
-    notifyListeners();  // setPrefsの通知
+    if (property.isMarked == null) {
+      property.isMarked = _markedPropertyBools[(property.id - 1)];  // if null -> 最初は初期値false
+    }
+
+    property.isMarked = await _propertyRepository.markIt(property);  // 一発目false送りtrue
+    _markedPropertyBools[(property.id - 1)] = property.isMarked;  /// _markedPropertyBools該当がtrue
+    notifyListeners();
+  }
+
+
+  Future<void> unmarkIt(Property property) async {
+    property.isMarked = await _propertyRepository.unmarkIt(property);
+    _markedPropertyBools[(property.id - 1)] = property.isMarked;
+    notifyListeners();
   }
 }

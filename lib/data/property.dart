@@ -10,6 +10,7 @@ class Property {
   List<Facilities> facilities;
 
   bool isReserved;
+  bool isMarked;
 
   Property({
     this.id,
@@ -22,6 +23,7 @@ class Property {
     this.propertyDetails,
     this.facilities,
     this.isReserved,
+    this.isMarked,
   });
 
   Property.fromJson(Map<String, dynamic> json) {
@@ -78,7 +80,6 @@ class PropertyDetails {
 
 class Facilities {
   String name;
-
   Facilities({this.name});
 
   Facilities.fromJson(Map<String, dynamic> json) {

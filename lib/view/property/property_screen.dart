@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:reservecom/data/property.dart';
-import 'package:reservecom/viewmodel/property_view_model.dart';
+
+import '../../data/property.dart';
+import '../../viewmodel/property_view_model.dart';
 
 
 class PropertyScreen extends StatefulWidget {
@@ -28,7 +29,8 @@ class _PropertyScreenState extends State<PropertyScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final _propertyViewModel = Provider.of<PropertyViewModel>(context);
+    // final _propertyViewModel = Provider.of<PropertyViewModel>(context, listen: false);
+    final _propertyViewModel = Provider.of<PropertyViewModel>(context);    
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -54,12 +56,20 @@ class _PropertyScreenState extends State<PropertyScreen> {
                 border: Border.all(color: Colors.grey),
                 borderRadius: BorderRadius.circular(12),
               ),
-              child: IconButton(
-                icon: Icon(Icons.bookmark, size: 20),
-                color: Colors.grey,
-                // onPressed: () => print('comm: Pushed Bookmark'),
-                onPressed: () => _markIt(context),
-              ),
+                  
+              child: _propertyViewModel.markedPropertyBools[(widget.property.id - 1)] == false
+                  ? IconButton(
+                    icon: Icon(Icons.bookmark_border),
+                    iconSize: 20,
+                    color: Colors.grey,
+                    onPressed: () => _markIt(context),
+                  )
+                  : IconButton(
+                    icon: Icon(Icons.bookmark),
+                    iconSize: 20,
+                    color: Colors.orange,
+                    onPressed: () => _unmarkIt(context),
+                  ),
             ),
           ],
           backgroundColor: Colors.transparent,
@@ -302,8 +312,14 @@ class _PropertyScreenState extends State<PropertyScreen> {
   }
 
 
-  _markIt(BuildContext context) async {
-    final propertyViewModel = Provider.of<PropertyViewModel>(context, listen: false);
-    await propertyViewModel.markIt(widget.property);
+
+  Future<void> _markIt(BuildContext context) async {
+    final _propertyViewModel = Provider.of<PropertyViewModel>(context, listen: false);
+    await _propertyViewModel.markIt(widget.property);
+  }
+
+  Future<void> _unmarkIt(BuildContext context) async {
+    final _propertyViewModel = Provider.of<PropertyViewModel>(context, listen: false);
+    await _propertyViewModel.unmarkIt(widget.property);
   }
 }
