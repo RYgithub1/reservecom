@@ -6,7 +6,6 @@ import 'package:reservecom/view/search/widget/search_property_delegate.dart';
 
 import '../../viewmodel/property_view_model.dart';
 import '../search/search_bottom_sheet.dart';
-import '../search/search_screen.dart';
 import 'widget/accommodation_type.dart';
 import 'widget/property_tile.dart';
 
@@ -167,12 +166,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                   splashColor: Colors.blueAccent,
                                   onTap: () {
                                     print('comm: SearchScreen');
-                                    Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (context) {
-                                        return SearchScreen();
-                                      },
-                                    ));
-                                    // return _searchProperty(context);        
+                                    return _searchProperty(context);
                                   },
                                   child: Text(
                                     'Why don\'t you search a property?',
@@ -307,14 +301,21 @@ class _DashboardScreenState extends State<DashboardScreen> {
   }
 
 
-  // _searchProperty(BuildContext context) async {
-  // // Widget _searchProperty(BuildContext context) async {
-  //   final selectedProperty = await showSearch(
-  //     context: context,
-  //     delegate: SearchPropertyDelegate(),
-  //   );
 
+  _searchProperty(BuildContext context) async {
+    // 検索 -> Property格納
+    final _selectedProperty = await showSearch(
+      context: context,
+      delegate: SearchPropertyDelegate(),
+    );
+    // // Property検索結果を処理
+    // if (_selectedProperty != null) {
+    //   Navigator.of(context).push(MaterialPageRoute(
+    //     builder: (_) => PropertyScreen(
+    //       // property: propertyViewModel.properties[_arrayNumber],
+    //     ),       /// [property?]    
 
-
-  // }
+    //   ));
+    // }
+  }
 }

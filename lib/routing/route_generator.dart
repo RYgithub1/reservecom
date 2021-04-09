@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:reservecom/view/home_screen.dart';
-import 'package:reservecom/view/search/search_screen.dart';
 
 import '../view/dashboard/dashboard_screen.dart';
 import '../view/property/property_screen.dart';
@@ -45,13 +44,13 @@ class RouteGenerator {
           ),
         );
 
-      case routes.SearchScreenRoute:
-        return MaterialPageRoute(
-          builder: (_) => ChangeNotifierProvider.value(
-            value: locator<PropertyViewModel>(),
-            child: SearchScreen(),
-          ),
-        );
+      // case routes.SearchScreenRoute:
+      //   return MaterialPageRoute(
+      //     builder: (_) => ChangeNotifierProvider.value(
+      //       value: locator<PropertyViewModel>(),
+      //       child: SearchScreen(),
+      //     ),
+      //   );
     }
 
     return MaterialPageRoute(

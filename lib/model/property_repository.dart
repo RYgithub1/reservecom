@@ -81,11 +81,9 @@ class PropertyRepository {
 
     if (query.isNotEmpty) {
       _searchedProperties.clear();
-
       parsedList.forEach((prop) {
-        // print('comm700: title: ' + prop.propertyDetails.title);
-        // print('comm701: description: ' + prop.propertyDetails.description);
-        prop.propertyDetails.title.contains(query)  // prop1のtitle/desc -> prop2のtitle/desc
+        // Seach: prop1のtitle/desc -> prop2のtitle/desc
+        prop.propertyDetails.title.contains(query)
             ? _searchedProperties.add(prop)
             : prop.propertyDetails.description.contains(query)
                 ? _searchedProperties.add(prop)
@@ -93,17 +91,6 @@ class PropertyRepository {
       });
     }
 
-    // print('comm: type1: ${parsedList.runtimeType}');
-    // print('comm: type2: ${parsedList[0].runtimeType}');
-    // print('comm: type3: ${parsedList[0].propertyDetails.title.runtimeType}');
-    // print('comm: type4: ${parsedList[0].propertyDetails.description.runtimeType}');
-
-      // _properties.clear();
-      // _properties.addAll(parsedList);
-      // _properties.forEach((prop) {
-      //   print('comm02: ' + prop.ownerName + ':' + prop.ownerPhoneNumber);
-      // });
-      /// [  query    ]
     return _searchedProperties;
   }
 }

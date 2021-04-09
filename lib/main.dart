@@ -12,10 +12,6 @@ Future<void> main() async {
   await DotEnv.load(fileName: ".env");
   await setupLocator();
   runApp(
-    // ChangeNotifierProvider<PropertyViewModel>(
-    //   create: (_) => PropertyViewModel(),
-    //   child: MyApp(),
-    // ),
     MultiProvider(
       providers: [
         ChangeNotifierProvider<PropertyViewModel>(

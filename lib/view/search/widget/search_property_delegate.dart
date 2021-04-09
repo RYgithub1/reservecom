@@ -62,7 +62,7 @@ class SearchPropertyDelegate extends SearchDelegate<Property> {
       children: List.generate(
         _searchViewModel.searchedProperties.length,
         (position) {
-          final _searchedProperty = _searchViewModel.searchedProperties[position];
+          final _oneSearchedProperty = _searchViewModel.searchedProperties[position];
 
           return Card(
             elevation: 2,
@@ -70,8 +70,7 @@ class SearchPropertyDelegate extends SearchDelegate<Property> {
             child: Padding(
               padding: const EdgeInsets.all(4),
               child: InkWell(
-                // onTap: () {},          
-                onTap: () => close(context, _searchedProperty),
+                onTap: () => close(context, _oneSearchedProperty),  // onTap -> closeして結果を返す
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -93,8 +92,8 @@ class SearchPropertyDelegate extends SearchDelegate<Property> {
                       flex: 1,
                       child: SingleChildScrollView(
                         child: Container(
-                          padding: const EdgeInsets.all(4),
-                          margin: const EdgeInsets.only(bottom: 8),
+                          padding: const EdgeInsets.all(8),
+                          margin: const EdgeInsets.only(bottom: 12),
                           child: _searchViewModel.searchedProperties[position].propertyDetails.title == null
                               || _searchViewModel.searchedProperties[position].propertyDetails.description == null
                               ? Column(
@@ -111,7 +110,11 @@ class SearchPropertyDelegate extends SearchDelegate<Property> {
                                     alignment: Alignment.center,
                                     child: Text(
                                       _searchViewModel.searchedProperties[position].propertyDetails.title,
-                                      style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold,),
+                                      style: TextStyle(
+                                        fontSize: 20,
+                                        color: Colors.blue,
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                     ),
                                   ),
                                   Text(

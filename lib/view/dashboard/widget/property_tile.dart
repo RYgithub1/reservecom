@@ -5,6 +5,7 @@ import '../../property/property_screen.dart';
 import 'property_tile_left.dart';
 import 'property_tile_right.dart';
 
+
 /// Widget [PropertyTile] : The PropertyTile is used for Dashboard Screen
 class PropertyTile extends StatelessWidget {
   final Property property;

@@ -14,10 +14,6 @@ class SearchViewModel extends ChangeNotifier {
 
   Future<void> searchProperty(String query) async {
     _searchedProperties = await _propertyRepository.searchProperty(query);
-
     notifyListeners();
-
-
-
   }
 }
