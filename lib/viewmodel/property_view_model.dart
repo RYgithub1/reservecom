@@ -103,4 +103,17 @@ class PropertyViewModel extends ChangeNotifier {
     ];
     notifyListeners();
   }
+
+
+  // List<Property> jobList;
+  // var filteredList = List<Property>.from(
+  //   [
+  //     jobList.where((Property e) {
+  //       return
+  //         e.rental_price > user_min_selected_salary
+  //         &&
+  //         e.rental_price < user_max_selected_salary
+  //     })
+  //   ]
+  // )
 }

@@ -119,7 +119,8 @@ class _SearchBottomSheetState extends State<SearchBottomSheet> {
                     padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(8),
-                      color: Colors.grey[200],
+                      // color: Colors.grey[200],       
+                      color: Colors.blue,
                     ),
                     child: Row(
                       children: <Widget>[
@@ -127,7 +128,7 @@ class _SearchBottomSheetState extends State<SearchBottomSheet> {
                         SizedBox(width: 4),
                         Text(
                           '4',
-                          style: TextStyle(fontSize: 10),
+                          style: TextStyle(fontSize: 10, color: Colors.white),    
                         ),
                       ],
                     ),
@@ -166,6 +167,21 @@ class _SearchBottomSheetState extends State<SearchBottomSheet> {
               Wrap(
                 spacing: 6,
                 children: <Widget>[
+                  FilterChip(
+                    shape: StadiumBorder(
+                      side: BorderSide(
+                        // color: _filters.contains(actor.name) 
+                        color: false
+                          ? Colors.transparent
+                          : Colors.blue,
+                        width: 1.0,
+                      ),
+                    ),
+                    label: Text('ddd'),  
+                    onSelected: (bool value) {  
+                      print("selected");
+                    },
+                  ),
                   Chip(
                     label: Text('Dining room'),
                     autofocus: true,
@@ -270,6 +286,7 @@ class _SearchBottomSheetState extends State<SearchBottomSheet> {
                   style: TextStyle(color: Colors.white),
                 ),
                 onPressed: () {
+                         
                 },
                 color: Colors.blue,
                 shape: RoundedRectangleBorder(
