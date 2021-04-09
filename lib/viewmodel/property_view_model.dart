@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
 import '../data/property.dart';
@@ -32,7 +33,7 @@ class PropertyViewModel extends ChangeNotifier {
     /// [ > PropertyInfo ]
     _isLoading = true;
     try {
-      final response = await PropertyRepository.getPropertyInfo();
+      final Response<dynamic> response = await PropertyRepository.getPropertyInfo();
       List<dynamic> decodedList = json.decode(response.toString());  // [{}] to {}
       final List<Property> parsedList = List<Property>.from(
         decodedList.map((emon) => Property.fromJson(emon)),  // Map<String, dynamic> emon
@@ -42,9 +43,10 @@ class PropertyViewModel extends ChangeNotifier {
       // });
       _properties.clear();
       _properties.addAll(parsedList);
-      // _properties.forEach((prop) {
-      //   print('comm02: ' + prop.ownerName + ':' + prop.ownerPhoneNumber);
-      // });
+      _properties.forEach((prop) {
+        // print('comm02: ' + prop.ownerName + ':' + prop.ownerPhoneNumber);
+        // print('comm03: ' + prop.propertyDetails.title);
+      });
       _isLoading = false;
 
     } catch (err) {

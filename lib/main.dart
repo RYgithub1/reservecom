@@ -5,16 +5,28 @@ import 'package:provider/provider.dart';
 import 'routing/service_locator.dart';
 import 'view/home_screen.dart';
 import 'viewmodel/property_view_model.dart';
+import 'viewmodel/search_view_model.dart';
 
 Future<void> main() async {
   // WidgetsFlutterBinding.ensureInitialized();
   await DotEnv.load(fileName: ".env");
   await setupLocator();
   runApp(
-    ChangeNotifierProvider<PropertyViewModel>(
-        create: (_) => PropertyViewModel(),
-        child: MyApp(),
-      ),
+    // ChangeNotifierProvider<PropertyViewModel>(
+    //   create: (_) => PropertyViewModel(),
+    //   child: MyApp(),
+    // ),
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider<PropertyViewModel>(
+          create: (_) => PropertyViewModel(),
+        ),
+        ChangeNotifierProvider<SearchViewModel>(
+          create: (_) => SearchViewModel(),
+        ),
+      ],
+      child: MyApp(),
+    ),
   );
 }
 

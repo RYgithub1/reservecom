@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'price_range_graph.dart';
-import 'sort_by_constraint.dart';
+import 'widget/price_range_graph.dart';
+import 'widget/sort_by_constraint.dart';
+
 
 class SearchBottomSheet extends StatefulWidget {
   @override

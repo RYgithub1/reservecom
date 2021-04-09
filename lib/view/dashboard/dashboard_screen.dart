@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:provider/provider.dart';
+import 'package:reservecom/view/search/widget/search_property_delegate.dart';
 
 import '../../viewmodel/property_view_model.dart';
+import '../search/search_bottom_sheet.dart';
+import '../search/search_screen.dart';
 import 'widget/accommodation_type.dart';
 import 'widget/property_tile.dart';
-import 'widget/search_bottom_sheet.dart';
 
 
 class DashboardScreen extends StatefulWidget {
@@ -164,10 +166,16 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                 InkWell(
                                   splashColor: Colors.blueAccent,
                                   onTap: () {
-                                    print('comm: Search');
+                                    print('comm: SearchScreen');
+                                    Navigator.of(context).push(MaterialPageRoute(
+                                      builder: (context) {
+                                        return SearchScreen();
+                                      },
+                                    ));
+                                    // return _searchProperty(context);        
                                   },
                                   child: Text(
-                                    'Search your ...',
+                                    'Why don\'t you search a property?',
                                     style: TextStyle(color: Colors.grey),
                                   ),
                                 ),
@@ -297,4 +305,16 @@ class _DashboardScreenState extends State<DashboardScreen> {
     final _propertyViewModel = Provider.of<PropertyViewModel>(context, listen: false);
     await _propertyViewModel.removeMarkedProperty();
   }
+
+
+  // _searchProperty(BuildContext context) async {
+  // // Widget _searchProperty(BuildContext context) async {
+  //   final selectedProperty = await showSearch(
+  //     context: context,
+  //     delegate: SearchPropertyDelegate(),
+  //   );
+
+
+
+  // }
 }
