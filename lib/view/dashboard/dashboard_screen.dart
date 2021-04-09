@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:provider/provider.dart';
-import 'package:reservecom/view/search/widget/search_property_delegate.dart';
 
 import '../../viewmodel/property_view_model.dart';
+import '../property/property_screen.dart';
 import '../search/search_bottom_sheet.dart';
+import '../search/widget/search_property_delegate.dart';
 import 'widget/accommodation_type.dart';
 import 'widget/property_tile.dart';
 
@@ -301,21 +302,21 @@ class _DashboardScreenState extends State<DashboardScreen> {
   }
 
 
-
-  _searchProperty(BuildContext context) async {
-    // 検索 -> Property格納
+  Future<void> _searchProperty(BuildContext context) async {
+    final _propertyViewModel = Provider.of<PropertyViewModel>(context, listen: false);
+    // 検索 -> Click対象Propertyを_selectedPropertyへ格納
     final _selectedProperty = await showSearch(
       context: context,
       delegate: SearchPropertyDelegate(),
     );
-    // // Property検索結果を処理
-    // if (_selectedProperty != null) {
-    //   Navigator.of(context).push(MaterialPageRoute(
-    //     builder: (_) => PropertyScreen(
-    //       // property: propertyViewModel.properties[_arrayNumber],
-    //     ),       /// [property?]    
-
-    //   ));
-    // }
+    // Property検索結果を処理
+    if (_selectedProperty != null) {
+      final int _selectedPropertyId = _selectedProperty.id;
+      Navigator.of(context).push(MaterialPageRoute(
+        builder: (_) => PropertyScreen(
+          property: _propertyViewModel.properties[(_selectedPropertyId - 1)],
+        ),
+      ));
+    }
   }
 }

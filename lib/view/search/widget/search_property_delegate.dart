@@ -70,7 +70,8 @@ class SearchPropertyDelegate extends SearchDelegate<Property> {
             child: Padding(
               padding: const EdgeInsets.all(4),
               child: InkWell(
-                onTap: () => close(context, _oneSearchedProperty),  // onTap -> closeして結果を返す
+                // onTap -> closeしてclick対象をパス
+                onTap: () => close(context, _oneSearchedProperty),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.center,
