@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 
-import 'widget/price_range_graph.dart';
-import 'widget/sort_by_constraint.dart';
+import 'widget/facility.dart';
+import 'widget/price_range.dart';
+import 'widget/rating.dart';
+import 'widget/sort_by.dart';
 
 
 class SearchBottomSheet extends StatefulWidget {
   @override
   _SearchBottomSheetState createState() => _SearchBottomSheetState();
 }
+
 
 class _SearchBottomSheetState extends State<SearchBottomSheet> {
   @override
@@ -17,6 +20,8 @@ class _SearchBottomSheetState extends State<SearchBottomSheet> {
       child: Column(
         children: <Widget>[
           SizedBox(height: 20),
+
+          /// [--- SortBy() ---]
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
@@ -27,11 +32,12 @@ class _SearchBottomSheetState extends State<SearchBottomSheet> {
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
               ),
-              SortByConstraint(),
+              SortBy(),
             ],
           ),
-
           SizedBox(height: 12),
+
+          /// [--- PriceRange() ---]
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
@@ -42,11 +48,12 @@ class _SearchBottomSheetState extends State<SearchBottomSheet> {
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
               ),
-              PriceRangeGraph(),
+              PriceRange(),    
             ],
           ),
-
           SizedBox(height: 12),
+
+          /// [--- Rating() ---]
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
@@ -57,106 +64,12 @@ class _SearchBottomSheetState extends State<SearchBottomSheet> {
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  Container(
-                    margin: const EdgeInsets.all(4),
-                    padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
-                      color: Colors.grey[200],
-                    ),
-                    child: Row(
-                      children: <Widget>[
-                        const Icon(Icons.star, color: Colors.yellow, size: 16),
-                        SizedBox(width: 4),
-                        Text(
-                          '1',
-                          style: TextStyle(fontSize: 10),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    margin: const EdgeInsets.all(4),
-                    padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
-                      color: Colors.grey[200],
-                    ),
-                    child: Row(
-                      children: <Widget>[
-                        const Icon(Icons.star, color: Colors.yellow, size: 16),
-                        SizedBox(width: 4),
-                        Text(
-                          '2',
-                          style: TextStyle(fontSize: 10),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    margin: const EdgeInsets.all(4),
-                    padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
-                      color: Colors.grey[200],
-                    ),
-                    child: Row(
-                      children: <Widget>[
-                        const Icon(Icons.star, color: Colors.yellow, size: 16),
-                        SizedBox(width: 4),
-                        Text(
-                          '3',
-                          style: TextStyle(fontSize: 10),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    margin: const EdgeInsets.all(4),
-                    padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
-                      // color: Colors.grey[200],       
-                      color: Colors.blue,
-                    ),
-                    child: Row(
-                      children: <Widget>[
-                        const Icon(Icons.star, color: Colors.yellow, size: 16),
-                        SizedBox(width: 4),
-                        Text(
-                          '4',
-                          style: TextStyle(fontSize: 10, color: Colors.white),    
-                        ),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    margin: const EdgeInsets.all(4),
-                    padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
-                      color: Colors.grey[200],
-                    ),
-                    child: Row(
-                      children: <Widget>[
-                        const Icon(Icons.star, color: Colors.yellow, size: 16),
-                        SizedBox(width: 4),
-                        Text(
-                          '5',
-                          style: TextStyle(fontSize: 10),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
+              Rating(),     
             ],
           ),
-
           SizedBox(height: 12),
+
+          /// [--- Facility() ---]
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
@@ -164,118 +77,12 @@ class _SearchBottomSheetState extends State<SearchBottomSheet> {
                 'Facility',
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
-              Wrap(
-                spacing: 6,
-                children: <Widget>[
-                  FilterChip(
-                    shape: StadiumBorder(
-                      side: BorderSide(
-                        // color: _filters.contains(actor.name) 
-                        color: false     
-                          ? Colors.transparent
-                          : Colors.blue,
-                        width: 1.0,
-                      ),
-                    ),
-                    label: Text('ddd'),  
-                    onSelected: (bool value) {  
-                      print("selected");
-                    },
-                  ),
-                  Chip(
-                    label: Text('Dining room'),
-                    autofocus: true,
-                    avatar: CircleAvatar(
-                      child: Icon(Icons.restaurant, size: 16),
-                      backgroundColor: Colors.grey[100],
-                    ),
-                  ),
-                  Chip(
-                    label: Text('Bathroom'),
-                    autofocus: true,
-                    avatar: CircleAvatar(
-                      child: Icon(Icons.bathtub_outlined, size: 16),
-                      backgroundColor: Colors.grey[100],
-                    ),
-                  ),
-                  Chip(
-                    label: Text('TV room'),
-                    autofocus: true,
-                    avatar: CircleAvatar(
-                      child: Icon(Icons.tv, size: 16),
-                      backgroundColor: Colors.grey[100],
-                    ),
-                  ),
-                  Chip(
-                    label: Text('Bedroom'),
-                    autofocus: true,
-                    avatar: CircleAvatar(
-                      child: Icon(Icons.king_bed_outlined, size: 16),
-                      backgroundColor: Colors.grey[100],
-                    ),
-                  ),
-                  Chip(
-                    label: Text('Kitchen'),
-                    autofocus: true,
-                    avatar: CircleAvatar(
-                      child: Icon(Icons.kitchen, size: 16),
-                      backgroundColor: Colors.grey[100],
-                    ),
-                  ),
-                  Chip(
-                    label: Text('Drawing room'),
-                    autofocus: true,
-                    avatar: CircleAvatar(
-                      child: Icon(Icons.person_pin_outlined, size: 16),
-                      backgroundColor: Colors.grey[100],
-                    ),
-                  ),
-                  Chip(
-                    label: Text('Toilet'),
-                    autofocus: true,
-                    avatar: CircleAvatar(
-                      child: Icon(Icons.person_outline, size: 16),
-                      backgroundColor: Colors.grey[100],
-                    ),
-                  ),
-                  Chip(
-                    label: Text('Basin'),
-                    autofocus: true,
-                    avatar: CircleAvatar(
-                      child: Icon(Icons.wash_outlined, size: 16),
-                      backgroundColor: Colors.grey[100],
-                    ),
-                  ),
-                  Chip(
-                    label: Text('Gym'),
-                    autofocus: true,
-                    avatar: CircleAvatar(
-                      child: Icon(Icons.sports_handball, size: 16),
-                      backgroundColor: Colors.grey[100],
-                    ),
-                  ),
-                  Chip(
-                    label: Text('Spa'),
-                    autofocus: true,
-                    avatar: CircleAvatar(
-                      child: Icon(Icons.spa_outlined, size: 16),
-                      backgroundColor: Colors.grey[100],
-                    ),
-                  ),
-                  Chip(
-                    label: Text('Parking'),
-                    autofocus: true,
-                    avatar: CircleAvatar(
-                      child: Icon(Icons.local_parking, size: 16),
-                      backgroundColor: Colors.grey[100],
-                    ),
-                  ),
-                ],
-              ),
+              Facility(),   
             ],
           ),
-
           SizedBox(height: 4),
+
+          /// [--- FlatButton() ---]
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Container(

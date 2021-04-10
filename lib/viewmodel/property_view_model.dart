@@ -38,14 +38,40 @@ class PropertyViewModel extends ChangeNotifier {
       final List<Property> parsedList = List<Property>.from(
         decodedList.map((emon) => Property.fromJson(emon)),  // Map<String, dynamic> emon
       );
-      // parsedList.forEach((prop) {
-      //   print('comm01: ' + prop.ownerName + ':' + prop.ownerPhoneNumber);
-      // });
+
+      final List<Property> _filterdParsedList = List<Property>();   
+      parsedList.forEach((prop) {
+        // print('comm01: ' + prop.ownerName + ':' + prop.ownerPhoneNumber);
+        // print('comm02: ' + prop.propertyDetails.title);
+        print('comm03: ' + prop.rentalPrice);
+        print('comm04: ' + '${prop.rating}');
+        print('comm05: ' + '${prop.facilities.length}');
+
+        // _filterdParsedList = prop   
+
+
+      });
+       
+      // List<Property> jobList;
+      // var filteredList = List<Property>.from(
+      //   [
+      //     jobList.where((Property e) {
+      //       return
+      //         e.rental_price > user_min_selected_salary
+      //         &&
+      //         e.rental_price < user_max_selected_salary
+      //     })
+      //   ]
+      // )
+
       _properties.clear();
       _properties.addAll(parsedList);
       _properties.forEach((prop) {
-        // print('comm02: ' + prop.ownerName + ':' + prop.ownerPhoneNumber);
-        // print('comm03: ' + prop.propertyDetails.title);
+        // print('comm06: ' + prop.ownerName + ':' + prop.ownerPhoneNumber);
+        // print('comm07: ' + prop.propertyDetails.title);
+        print('comm08: ' + prop.rentalPrice);
+        print('comm09: ' + '${prop.rating}');
+        print('comm10: ' + '${prop.facilities.length}');
       });
       _isLoading = false;
 
@@ -103,17 +129,4 @@ class PropertyViewModel extends ChangeNotifier {
     ];
     notifyListeners();
   }
-
-
-  // List<Property> jobList;
-  // var filteredList = List<Property>.from(
-  //   [
-  //     jobList.where((Property e) {
-  //       return
-  //         e.rental_price > user_min_selected_salary
-  //         &&
-  //         e.rental_price < user_max_selected_salary
-  //     })
-  //   ]
-  // )
 }

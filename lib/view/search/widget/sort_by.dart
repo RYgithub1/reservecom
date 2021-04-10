@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 
 
-class SortByConstraint extends StatefulWidget {
-  // SortByConstraint({Key key}) : super(key: key);
+class SortBy extends StatefulWidget {
   @override
-  _SortByConstraintState createState() => _SortByConstraintState();
+  _SortByState createState() => _SortByState();
 }
 
 
-class _SortByConstraintState extends State<SortByConstraint> {
+class _SortByState extends State<SortBy> {
   String _defaultValue = 'Lowest rent';
   List<String> _sortList = <String>['Lowest rent', 'Rating', 'Review'];
 

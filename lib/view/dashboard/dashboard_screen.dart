@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 import '../../viewmodel/property_view_model.dart';
 import '../property/property_screen.dart';
 import '../search/search_bottom_sheet.dart';
-import '../search/widget/search_property_delegate.dart';
+import '../search/search_property_delegate.dart';
 import 'widget/accommodation_type.dart';
 import 'widget/property_tile.dart';
 

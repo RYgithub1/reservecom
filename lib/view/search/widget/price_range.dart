@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 
 
-class PriceRangeGraph extends StatefulWidget {
-  // PriceRrangeGraph({Key key}) : super(key: key);
+class PriceRange extends StatefulWidget {
   @override
-  _PriceRangeGraphState createState() => _PriceRangeGraphState();
+  _PriceRangeState createState() => _PriceRangeState();
 }
 
 
 
-class _PriceRangeGraphState extends State<PriceRangeGraph> {
+class _PriceRangeState extends State<PriceRange> {
   var _startRange = '';
   var _endRange = '';
   var _rangeValues = RangeValues(1000.0, 4000.0);
