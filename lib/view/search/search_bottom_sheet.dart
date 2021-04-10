@@ -171,7 +171,7 @@ class _SearchBottomSheetState extends State<SearchBottomSheet> {
                     shape: StadiumBorder(
                       side: BorderSide(
                         // color: _filters.contains(actor.name) 
-                        color: false
+                        color: false     
                           ? Colors.transparent
                           : Colors.blue,
                         width: 1.0,

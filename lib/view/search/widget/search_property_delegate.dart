@@ -7,13 +7,13 @@ import 'package:reservecom/viewmodel/search_view_model.dart';
 
 
 class SearchPropertyDelegate extends SearchDelegate<Property> {
-  @override
-  ThemeData appBarTheme(BuildContext context) {
-    final _theme = Theme.of(context);
-    return _theme.copyWith(
-      brightness: Brightness.dark,
-    );
-  }
+  // @override
+  // ThemeData appBarTheme(BuildContext context) {
+  //   final _theme = Theme.of(context);
+  //   return _theme.copyWith(
+  //     brightness: Brightness.dark,
+  //   );
+  // }
 
 
   @override
@@ -22,6 +22,7 @@ class SearchPropertyDelegate extends SearchDelegate<Property> {
       icon: Icon(Icons.arrow_back),
       onPressed: () {
         print('comm: buildLeading: No searched result');
+        // onPressed -> close、パスするもの(return先)なしnull
         close(context, null);
       },
     );
@@ -52,7 +53,7 @@ class SearchPropertyDelegate extends SearchDelegate<Property> {
   }
 
 
-
+  /// Widget [_buildSearchResult] : Build Search Result View for buildSuggestions() and buildResults().
   Widget _buildSearchResult(BuildContext context) {
     final _searchViewModel = Provider.of<SearchViewModel>(context, listen: false);
     _searchViewModel.searchProperty(query);
