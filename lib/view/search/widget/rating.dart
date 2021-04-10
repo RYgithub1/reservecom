@@ -16,11 +16,11 @@ class _RatingState extends State<Rating> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: <Widget>[
-        RatingChip(raitingText: '1'),
-        RatingChip(raitingText: '2'),
-        RatingChip(raitingText: '3'),
-        RatingChip(raitingText: '4'),
-        RatingChip(raitingText: '5'),
+        RatingChip(ratingText: '1', ratingClicked: true),
+        RatingChip(ratingText: '2', ratingClicked: false),
+        RatingChip(ratingText: '3', ratingClicked: false),
+        RatingChip(ratingText: '4', ratingClicked: true),
+        RatingChip(ratingText: '5', ratingClicked: true),
       ],
     );
   }

@@ -2,12 +2,15 @@ import 'package:flutter/material.dart';
 
 
 class RatingChip extends StatefulWidget {
-  final String raitingText;
-  RatingChip({@required this.raitingText});
+  final String ratingText;
+  final bool ratingClicked;
+  RatingChip({
+    @required this.ratingText,
+    @required this.ratingClicked,
+  });
   @override
   _RatingChipState createState() => _RatingChipState();
 }
-
 
 
 class _RatingChipState extends State<RatingChip> {
@@ -18,15 +21,19 @@ class _RatingChipState extends State<RatingChip> {
           padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8),
-            color: Colors.grey[300],
+            color: widget.ratingClicked == false
+                ? Colors.grey[300]
+                : Colors.blue,
           ),
           child: Row(
             children: <Widget>[
               const Icon(Icons.star, color: Colors.yellow, size: 16),
               SizedBox(width: 4),
               Text(
-                widget.raitingText,
-                style: TextStyle(fontSize: 10),
+                widget.ratingText,
+                style: widget.ratingClicked == false
+                    ? TextStyle(fontSize: 12, color: Colors.black)
+                    : TextStyle(fontSize: 12, color: Colors.white),
               ),
             ],
           ),
