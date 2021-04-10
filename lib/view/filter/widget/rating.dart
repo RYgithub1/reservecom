@@ -61,10 +61,6 @@ class _RatingState extends State<Rating> {
 
   Future<void> getRate(int index) async {
     final _propertyViewModel = Provider.of<PropertyViewModel>(context, listen: false);
-    // int _rateNumber = 1;
-    // _rateNumber = (index + 1);
     _propertyViewModel.getRate((index + 1));
-    // _propertyViewModel.rateProp = (index + 1);
-    
   }
 }

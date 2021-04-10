@@ -188,13 +188,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
                               borderRadius: BorderRadius.circular(12),
                             ),
                             child: IconButton(
-                              icon: Icon(
-                                Icons.import_export,
-                                size: 20,
-                              ),
+                              icon: Icon(Icons.import_export, size: 20),
                               color: Colors.blue,
                               onPressed: () {
-                                print('comm: SearchBottomSheet');
+                                print('comm: BottomSheet');
                                 showBarModalBottomSheet(
                                   backgroundColor: Colors.red,
                                   expand: true,

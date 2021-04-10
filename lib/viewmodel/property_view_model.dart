@@ -29,6 +29,8 @@ class PropertyViewModel extends ChangeNotifier {
 
   int _rateProp = 1;
   int get rateProp => _rateProp;
+  RangeValues _rangeValues = RangeValues(100.0, 7100.0);
+  RangeValues get rangeValues => _rangeValues;
 
 
 
@@ -140,6 +142,15 @@ class PropertyViewModel extends ChangeNotifier {
   Future<void> getRate(int rateNumber) async {
     _rateProp = rateNumber;
     print('comm550: rateNum: $_rateProp');
-    notifyListeners();
+    // notifyListeners();
   }
+
+  Future<void> getPriceRange(RangeValues rangeValues) async {
+    // _rangeValuesStart = rangeValues.start;
+    // _rangeValuesEnd = rangeValues.end;
+    _rangeValues = rangeValues;
+    print('comm551: rangeValues: $rangeValues');
+  }
+
+
 }

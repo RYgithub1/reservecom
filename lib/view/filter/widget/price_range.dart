@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../../../viewmodel/property_view_model.dart';
 
 
 class PriceRange extends StatefulWidget {
@@ -11,17 +14,17 @@ class PriceRange extends StatefulWidget {
 class _PriceRangeState extends State<PriceRange> {
   var _startRange = '';
   var _endRange = '';
-  var _rangeValues = RangeValues(1000.0, 4000.0);
+  var _rangeValues = RangeValues(100.0, 7100.0);
 
-  _updateLabels(RangeValues values) {
+  void _updateLabels(RangeValues values) {
     _startRange = '${_rangeValues.start.round()}';
     _endRange = '${_rangeValues.end.round()}';
   }
 
   @override
   void initState() {
-    _updateLabels(_rangeValues);
     super.initState();
+    _updateLabels(_rangeValues);
   }
 
   @override
@@ -32,9 +35,9 @@ class _PriceRangeState extends State<PriceRange> {
           alignment: Alignment.bottomCenter,
           children: <Widget>[
             Container(
-              height: 60,
+              height: 52,
               width: double.infinity,
-              color: Colors.grey[200],
+              color: Colors.grey[100],
               child: Center(child: Text('')),
             ),
             SliderTheme(
@@ -54,6 +57,7 @@ class _PriceRangeState extends State<PriceRange> {
                 onChanged: (values) {
                   _rangeValues = values;
                   setState(() => _updateLabels(values));
+                  getPriceRange(values);
                 },
               ),
             ),
@@ -72,9 +76,7 @@ class _PriceRangeState extends State<PriceRange> {
                 text: TextSpan(
                   style: TextStyle(color: Colors.grey, fontSize: 12),
                   children: <TextSpan>[
-                    TextSpan(
-                      text: 'Average prices : ',
-                    ),
+                    TextSpan(text: 'Average prices : '),
                     TextSpan(
                       text: '\$1,150',
                       style: TextStyle(fontSize: 16, color: Colors.blue, fontWeight: FontWeight.bold),
@@ -88,7 +90,10 @@ class _PriceRangeState extends State<PriceRange> {
       ],
     );
   }
+
+
+  Future<void> getPriceRange(RangeValues _rangeValues) async {
+    final _propertyViewModel = Provider.of<PropertyViewModel>(context, listen: false);
+    _propertyViewModel.getPriceRange(_rangeValues);
+  }
 }
-
-
-
