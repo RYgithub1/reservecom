@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 
 import '../../viewmodel/property_view_model.dart';
 import '../property/property_screen.dart';
-import '../search/search_bottom_sheet.dart';
+import '../filter/filter_bottom_sheet.dart';
 import '../search/search_property_delegate.dart';
 import 'widget/accommodation_type.dart';
 import 'widget/property_tile.dart';
@@ -201,7 +201,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                   context: context,
                                   builder: (context) => SingleChildScrollView(
                                     controller: ModalScrollController.of(context),
-                                    child: SearchBottomSheet()
+                                    child: FilterBottomSheet()
                                   ),
                                 );
                               },

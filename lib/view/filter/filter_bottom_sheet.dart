@@ -6,13 +6,13 @@ import 'widget/rating.dart';
 import 'widget/sort_by.dart';
 
 
-class SearchBottomSheet extends StatefulWidget {
+class FilterBottomSheet extends StatefulWidget {
   @override
-  _SearchBottomSheetState createState() => _SearchBottomSheetState();
+  _FilterBottomSheetState createState() => _FilterBottomSheetState();
 }
 
 
-class _SearchBottomSheetState extends State<SearchBottomSheet> {
+class _FilterBottomSheetState extends State<FilterBottomSheet> {
   @override
   Widget build(BuildContext context) {
     return Padding(
