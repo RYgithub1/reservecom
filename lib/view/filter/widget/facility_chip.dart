@@ -25,7 +25,7 @@ class _FacilityChipState extends State<FacilityChip> {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(16),
             color: widget.facilityClicked == false
-                ? Colors.grey[300]
+                ? Colors.grey[200]
                 : Colors.blue,
           ),
           child: Row(

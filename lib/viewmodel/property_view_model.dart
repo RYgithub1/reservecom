@@ -27,6 +27,10 @@ class PropertyViewModel extends ChangeNotifier {
   ];
   List<bool> get markedPropertyBools => _markedPropertyBools;
 
+  int _rateProp = 1;
+  int get rateProp => _rateProp;
+
+
 
   /// [Property Screen --------------------------]
   Future<void> getPropertyInfo() async {
@@ -127,6 +131,15 @@ class PropertyViewModel extends ChangeNotifier {
       false, false, false, false,
       false, false, false, false,
     ];
+    notifyListeners();
+  }
+
+
+
+  /// [Filter ------------------------]
+  Future<void> getRate(int rateNumber) async {
+    _rateProp = rateNumber;
+    print('comm550: rateNum: $_rateProp');
     notifyListeners();
   }
 }
