@@ -38,6 +38,12 @@ class PropertyViewModel extends ChangeNotifier {
   ];
   List<bool> get facilitiesAreValues => _facilitiesAreValues;
 
+  List<String> _facilityNameDefault = [
+    'Dining room', 'Bathroom', 'TV room', 'Bedroom', 'Kitchen', 'Drawing room',
+    'Toilet', 'Basin', 'Gym', 'Spa', 'Parking',
+  ];
+
+
 
 
   /// [Property Screen --------------------------]
@@ -50,33 +56,41 @@ class PropertyViewModel extends ChangeNotifier {
       final List<Property> parsedList = List<Property>.from(
         decodedList.map((emon) => Property.fromJson(emon)),  // Map<String, dynamic> emon
       );
+      // parsedList.forEach((prop) {
+      //   print('comm01: id: ' + '${prop.id}' + 'title: ' + '${prop.propertyDetails.title}');
+      // });
 
-      final List<Property> filterdParsedList = List<Property>();   
-      parsedList.forEach((prop) {
-        // print('comm01: ' + prop.ownerName + ':' + prop.ownerPhoneNumber);
-        // print('comm02: ' + prop.propertyDetails.title);
-        print('comm03: ' + prop.rentalPrice);
-        print('comm04: ' + '${prop.rating}');
-        print('comm05: ' + '${prop.facilities.length}');
-
-        /// prop1, prop2, prop3,,,
+      /// [... Filter ...]
+      final List<Property> filterdParsedList = List<Property>();          
+      parsedList.forEach((prop) {  /// prop1, prop2, prop3,,,
+        /// [------------]
         if (_ratingValue <= prop.rating ) {
-          filterdParsedList.add(prop);
+          filterdParsedList.add(prop);   /// [かつ -> 共通]
         }
-        // double doublePropRentalPrice = double.parse(prop.rentalPrice.substring(1));
-        // print('comm998: start: ${_rangeValues.start}');
-        // print('comm999: end: ${_rangeValues.end}');   
+        /// [------------]
+        double doublePropRentalPrice = double.parse(prop.rentalPrice.substring(1));
+        if (_rangeValues.start <= doublePropRentalPrice && doublePropRentalPrice <= _rangeValues.end) {
+        }
+        /// [------------]
+        List<String> _facilityNameClicked = [];                    /// [初期化？]
+        for (int _numClicked = 0; _numClicked < _facilitiesAreValues.length; _numClicked++){
+          if (_facilitiesAreValues[_numClicked] == true) {
+            _facilityNameClicked.add(_facilityNameDefault[_numClicked]);  
+          }
+        }
+        print('comm790: $_facilityNameClicked');
 
-        // if (_rangeValues.start <= doublePropRentalPrice &&  _rangeValues.end >= doublePropRentalPrice) {
-        //   print('comm: ggggggggggggggg');
-        // }
-        // print('comm450: ${double.parse(prop.rentalPrice.substring(1))}');
+        List<String> _propFacilityName = [];   /// [APIの各property、に含むfacility格納]    
+        prop.facilities.forEach((propFacility) {
+          _propFacilityName.add(propFacility.name);  
+        });
+        print('comm661: $_propFacilityName');
 
+        // const found = _propFacilityName.some(r => _facilityNameClicked.includes(r))
+        // _propFacilityName.
+        
 
-
-        // filterdParsedList
       });
-       
       // List<Property> jobList;
       // var filteredList = List<Property>.from(
       //   [
@@ -90,15 +104,10 @@ class PropertyViewModel extends ChangeNotifier {
       // )
 
       _properties.clear();
-      // _properties.addAll(parsedList);
       _properties.addAll(filterdParsedList);
-      _properties.forEach((prop) {
-        // print('comm06: ' + prop.ownerName + ':' + prop.ownerPhoneNumber);
-        // print('comm07: ' + prop.propertyDetails.title);
-        print('comm08: ' + prop.rentalPrice);
-        print('comm09: ' + '${prop.rating}');
-        print('comm10: ' + '${prop.facilities.length}');
-      });
+      // _properties.forEach((prop) {
+      //   print('comm07: id: ' + '${prop.id}' + 'title: ' + '${prop.propertyDetails.title}');
+      // });
       _isLoading = false;
 
     } catch (err) {
@@ -176,7 +185,7 @@ class PropertyViewModel extends ChangeNotifier {
   }
 
   Future<void> initializeFilter() async {
-    _rangeValues = RangeValues(100.0, 7100.0); 
+    _rangeValues = RangeValues(100.0, 7100.0);
     _ratingValue = 1;
     _facilitiesAreValues = [
       false, false, false, false, false, false,
