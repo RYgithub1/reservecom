@@ -89,7 +89,29 @@ class PropertyViewModel extends ChangeNotifier {
         // const found = _propFacilityName.some(r => _facilityNameClicked.includes(r))
         // _propFacilityName.
         
-
+        List<bool> _containFacilityBool = [];
+        // for (int _clickedLength = 0; _clickedLength < _facilityNameClicked.length; _clickedLength++){
+        //  クリックした配列３つ長さ、
+          // _propFacilityName
+          // _propFacilityName.forEach((facilityName) {
+        _facilityNameClicked.forEach((_clickedLength) {
+          if (_propFacilityName.contains(_facilityNameClicked[int.parse(_clickedLength)])) {
+            //  各々propに含む_propFacilityNameファシリティの配列.contains (各々含むか"""Bathroom, TV room, Gym''')
+            //  これを、各々のprop分 forEachで確認する
+            // filterdParsedList.add(prop);
+            _containFacilityBool.add(true);
+          } else {
+            // 1つでも含まなければ、filteredParsedListに含まない
+            _containFacilityBool.add(false);
+          }
+        });
+        // }
+        if (_containFacilityBool.contains(false)) {
+          // filterdParsedList対象外
+        } else {
+          filterdParsedList.add(prop);
+        }
+        print('comm662: filterdParsedList: $filterdParsedList');
       });
       // List<Property> jobList;
       // var filteredList = List<Property>.from(
