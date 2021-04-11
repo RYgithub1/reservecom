@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:reservecom/data/facility.dart';
 
 import '../data/property.dart';
 import '../model/property_repository.dart';
@@ -27,10 +28,15 @@ class PropertyViewModel extends ChangeNotifier {
   ];
   List<bool> get markedPropertyBools => _markedPropertyBools;
 
-  int _rateProp = 1;
-  int get rateProp => _rateProp;
+  int _ratingValue = 1;
+  int get ratingValue => _ratingValue;
   RangeValues _rangeValues = RangeValues(100.0, 7100.0);
   RangeValues get rangeValues => _rangeValues;
+  List<bool> _facilitiesAreValues = [
+    false, false, false, false, false, false,
+    false, false, false, false, false,
+  ];
+  List<bool> get facilitiesAreValues => _facilitiesAreValues;
 
 
 
@@ -45,7 +51,7 @@ class PropertyViewModel extends ChangeNotifier {
         decodedList.map((emon) => Property.fromJson(emon)),  // Map<String, dynamic> emon
       );
 
-      final List<Property> _filterdParsedList = List<Property>();   
+      final List<Property> filterdParsedList = List<Property>();   
       parsedList.forEach((prop) {
         // print('comm01: ' + prop.ownerName + ':' + prop.ownerPhoneNumber);
         // print('comm02: ' + prop.propertyDetails.title);
@@ -53,9 +59,11 @@ class PropertyViewModel extends ChangeNotifier {
         print('comm04: ' + '${prop.rating}');
         print('comm05: ' + '${prop.facilities.length}');
 
-        // _filterdParsedList = prop   
-
-
+        /// prop1, prop2, prop3,,,
+        if (_ratingValue <= prop.rating ) {
+          filterdParsedList.add(prop);
+        }
+        // filterdParsedList
       });
        
       // List<Property> jobList;
@@ -71,7 +79,8 @@ class PropertyViewModel extends ChangeNotifier {
       // )
 
       _properties.clear();
-      _properties.addAll(parsedList);
+      // _properties.addAll(parsedList);
+      _properties.addAll(filterdParsedList);
       _properties.forEach((prop) {
         // print('comm06: ' + prop.ownerName + ':' + prop.ownerPhoneNumber);
         // print('comm07: ' + prop.propertyDetails.title);
@@ -139,18 +148,27 @@ class PropertyViewModel extends ChangeNotifier {
 
 
   /// [Filter ------------------------]
-  Future<void> getRate(int rateNumber) async {
-    _rateProp = rateNumber;
-    print('comm550: rateNum: $_rateProp');
-    // notifyListeners();
+  Future<void> getRating(int indexPlusOne) async {
+    _ratingValue = indexPlusOne;
+    print('comm550: ratingValue: $_ratingValue');
   }
 
   Future<void> getPriceRange(RangeValues rangeValues) async {
-    // _rangeValuesStart = rangeValues.start;
-    // _rangeValuesEnd = rangeValues.end;
     _rangeValues = rangeValues;
-    print('comm551: rangeValues: $rangeValues');
+    print('comm551: rangeValues: $_rangeValues');
   }
 
+  Future<void> getFacilitiesAre(Facility _facil, int _facilIndex) async {
+    _facilitiesAreValues[_facilIndex] = _facil.isSelected;
+    print('comm552: facilitiesAreValue: ${_facilitiesAreValues[_facilIndex]}');
+  }
 
+  Future<void> initializeFilter() async {
+    _ratingValue = 1;
+    _rangeValues = RangeValues(100.0, 7100.0);
+    _facilitiesAreValues = [
+      false, false, false, false, false, false,
+      false, false, false, false, false,
+    ];
+  }
 }

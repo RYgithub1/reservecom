@@ -12,6 +12,7 @@ class Rating extends StatefulWidget {
 }
 
 
+
 class _RatingState extends State<Rating> {
   List<Rate> rates = List<Rate>();
 
@@ -27,9 +28,6 @@ class _RatingState extends State<Rating> {
 
   @override
   Widget build(BuildContext context) {
-    // final _propertyViewModel = Provider.of<PropertyViewModel>(context, listen: false);
-    // int _rateNumber = 1;
-
     return Container(
       margin: EdgeInsets.all(8.0),
       width: 400,
@@ -38,10 +36,7 @@ class _RatingState extends State<Rating> {
         scrollDirection: Axis.horizontal,
         shrinkWrap: true,
         itemCount: rates.length,
-        itemBuilder: (context, index) {     
-          // _rateNumber = (index -1);
-          // _propertyViewModel.getRate(_rateNumber);
-
+        itemBuilder: (context, index) {
           return InkWell(
             splashColor: Colors.blueAccent,
             onTap: () {
@@ -49,7 +44,7 @@ class _RatingState extends State<Rating> {
                 rates.forEach((ra) => ra.isSelected = false);
                 rates[index].isSelected = true;
               });
-              getRate(index);
+              getRating(index);
             },
             child: RatingCustomRadio(rates[index]),
           );
@@ -59,8 +54,8 @@ class _RatingState extends State<Rating> {
   }
 
 
-  Future<void> getRate(int index) async {
+  Future<void> getRating(int index) async {
     final _propertyViewModel = Provider.of<PropertyViewModel>(context, listen: false);
-    _propertyViewModel.getRate((index + 1));
+    _propertyViewModel.getRating((index + 1));
   }
 }

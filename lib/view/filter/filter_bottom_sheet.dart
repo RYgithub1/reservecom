@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'widget/facility.dart';
+import '../dashboard/dashboard_screen.dart';
+import 'widget/facilities_are.dart';
 import 'widget/price_range.dart';
 import 'widget/rating.dart';
 import 'widget/sort_by.dart';
@@ -48,7 +49,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
               ),
-              PriceRange(),    
+              PriceRange(),
             ],
           ),
           SizedBox(height: 12),
@@ -64,7 +65,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
               ),
-              Rating(),     
+              Rating(),
             ],
           ),
           SizedBox(height: 12),
@@ -77,7 +78,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
                 'Facility',
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
-              Facility(),   
+              FacilitiesAre(),
             ],
           ),
           SizedBox(height: 4),
@@ -93,7 +94,9 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
                   style: TextStyle(color: Colors.white),
                 ),
                 onPressed: () {
-                         
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (_) => DashboardScreen(),
+                  ));
                 },
                 color: Colors.blue,
                 shape: RoundedRectangleBorder(

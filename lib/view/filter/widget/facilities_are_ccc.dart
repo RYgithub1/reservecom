@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
 
 
-class FacilityChip extends StatefulWidget {
+class FacilitiesAreCcc extends StatefulWidget {
   final IconData facilityIconData;
   final String facilityText;
   final bool facilityClicked;
-  FacilityChip({
+  FacilitiesAreCcc({
     @required this.facilityIconData,
     @required this.facilityText,
     @required this.facilityClicked,
   });
   @override
-  _FacilityChipState createState() => _FacilityChipState();
+  _FacilitiesAreCccState createState() => _FacilitiesAreCccState();
 }
 
 
 
-class _FacilityChipState extends State<FacilityChip> {
+class _FacilitiesAreCccState extends State<FacilitiesAreCcc> {
   @override
   Widget build(BuildContext context) {
     return Container(

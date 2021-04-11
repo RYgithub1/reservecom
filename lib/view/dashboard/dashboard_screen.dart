@@ -191,7 +191,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
                               icon: Icon(Icons.import_export, size: 20),
                               color: Colors.blue,
                               onPressed: () {
-                                print('comm: BottomSheet');
+                                _judgePVM.initializeFilter();
+                                print('comm360: Initialize Filter');
+                                print('comm361: Open BottomSheet');
                                 showBarModalBottomSheet(
                                   backgroundColor: Colors.red,
                                   expand: true,
