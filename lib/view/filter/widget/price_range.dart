@@ -92,8 +92,8 @@ class _PriceRangeState extends State<PriceRange> {
   }
 
 
-  Future<void> getPriceRange(RangeValues _rangeValues) async {
+  Future<void> getPriceRange(RangeValues _priceRangeValues) async {
     final _propertyViewModel = Provider.of<PropertyViewModel>(context, listen: false);
-    _propertyViewModel.getPriceRange(_rangeValues);
+    _propertyViewModel.getPriceRange(_priceRangeValues);
   }
 }

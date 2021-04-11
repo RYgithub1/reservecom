@@ -63,6 +63,17 @@ class PropertyViewModel extends ChangeNotifier {
         if (_ratingValue <= prop.rating ) {
           filterdParsedList.add(prop);
         }
+        // double doublePropRentalPrice = double.parse(prop.rentalPrice.substring(1));
+        // print('comm998: start: ${_rangeValues.start}');
+        // print('comm999: end: ${_rangeValues.end}');   
+
+        // if (_rangeValues.start <= doublePropRentalPrice &&  _rangeValues.end >= doublePropRentalPrice) {
+        //   print('comm: ggggggggggggggg');
+        // }
+        // print('comm450: ${double.parse(prop.rentalPrice.substring(1))}');
+
+
+
         // filterdParsedList
       });
        
@@ -91,6 +102,7 @@ class PropertyViewModel extends ChangeNotifier {
       _isLoading = false;
 
     } catch (err) {
+      print('comm: err: $err');
       rethrow;
     } finally {
       print('comm: Finish getPropertyInfo(): finally');
@@ -148,24 +160,24 @@ class PropertyViewModel extends ChangeNotifier {
 
 
   /// [Filter ------------------------]
+  Future<void> getPriceRange(RangeValues priceRangeValues) async {
+    _rangeValues = priceRangeValues;
+    print('comm551: rangeValues: $_rangeValues');
+  }
+
   Future<void> getRating(int indexPlusOne) async {
     _ratingValue = indexPlusOne;
     print('comm550: ratingValue: $_ratingValue');
   }
 
-  Future<void> getPriceRange(RangeValues rangeValues) async {
-    _rangeValues = rangeValues;
-    print('comm551: rangeValues: $_rangeValues');
-  }
-
-  Future<void> getFacilitiesAre(Facility _facil, int _facilIndex) async {
-    _facilitiesAreValues[_facilIndex] = _facil.isSelected;
-    print('comm552: facilitiesAreValue: ${_facilitiesAreValues[_facilIndex]}');
+  Future<void> getFacilitiesAre(Facility facil, int facilIndex) async {
+    _facilitiesAreValues[facilIndex] = facil.isSelected;
+    print('comm552: facilitiesAreValue: ${_facilitiesAreValues[facilIndex]}');
   }
 
   Future<void> initializeFilter() async {
+    _rangeValues = RangeValues(100.0, 7100.0); 
     _ratingValue = 1;
-    _rangeValues = RangeValues(100.0, 7100.0);
     _facilitiesAreValues = [
       false, false, false, false, false, false,
       false, false, false, false, false,
