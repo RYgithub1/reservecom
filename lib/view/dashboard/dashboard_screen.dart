@@ -272,17 +272,35 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         ? Center(child: CircularProgressIndicator())
                         : Consumer<PropertyViewModel>(
                           builder: (context, propertyViewModel, child) {
-                            return ListView.builder(
-                              itemCount: propertyViewModel.properties.length,
-                              itemBuilder: (BuildContext context, int _arrayNumber) {
-                                if (propertyViewModel.properties[_arrayNumber].isReserved == null) {
-                                  propertyViewModel.properties[_arrayNumber].isReserved = false;
-                                }
-                                return PropertyTile(
-                                  property: propertyViewModel.properties[_arrayNumber],
+                            return propertyViewModel.properties.length == 0
+                                ? Padding(
+                                  padding: const EdgeInsets.only(bottom: 60),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children: <Widget>[
+                                      Text(
+                                        'No items match your filters.',
+                                        style: TextStyle(fontSize: 20, color: Colors.red),
+                                      ),
+                                      Text(
+                                        'Try it again.',
+                                        style: TextStyle(fontSize: 20, color: Colors.red),
+                                      ),
+                                    ]
+                                  ),
+                                )
+                                : ListView.builder(
+                                  itemCount: propertyViewModel.properties.length,
+                                  itemBuilder: (BuildContext context, int _arrayNumber) {
+                                    if (propertyViewModel.properties[_arrayNumber].isReserved == null) {
+                                      propertyViewModel.properties[_arrayNumber].isReserved = false;
+                                    }
+                                    return PropertyTile(
+                                      property: propertyViewModel.properties[_arrayNumber],
+                                    );
+                                  },
                                 );
-                              },
-                            );
                           }
                         ),
                     ),
