@@ -37,16 +37,8 @@ class PropertyTileLeft extends StatelessWidget {
                 color: Colors.white.withOpacity(0.5),
               ),
               child: _propertyViewModel.markedPropertyBools[(property.id - 1)] == false
-                  ? const Icon(
-                    Icons.bookmark_border,
-                    size: 16,
-                    color: Colors.white,
-                  )
-                  : const Icon(
-                    Icons.bookmark,
-                    size: 16,
-                    color: Colors.orange,
-                  ),
+                  ? const Icon(Icons.bookmark_border, size: 16, color: Colors.white)
+                  : const Icon(Icons.bookmark, size: 16, color: Colors.orange),
             );
           }
         ),

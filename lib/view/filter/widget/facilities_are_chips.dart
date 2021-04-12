@@ -29,7 +29,7 @@ class FacilitiesAreChips extends StatelessWidget {
                   : Colors.black,
               size: 14,
             ),
-            SizedBox(width: 4),
+            const SizedBox(width: 4),
             Text(
               _fac.facilityText,
               style: TextStyle(

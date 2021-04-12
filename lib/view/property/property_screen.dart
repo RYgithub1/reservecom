@@ -112,18 +112,14 @@ class _PropertyScreenState extends State<PropertyScreen> {
                       ),
                       Row(
                         children: <Widget>[
-                          Row(
-                            children: <Widget>[
-                              Icon(Icons.star, color: Colors.yellow),
-                              Text(
-                                widget.property.rating.toString(),
-                                style: TextStyle(fontWeight: FontWeight.bold),
-                              ),
-                              Text(
-                                '(' + '${widget.property.id*127}' + ' Reviews)',
-                                style: TextStyle(color: Colors.grey),
-                              ),
-                            ],
+                          Icon(Icons.star, color: Colors.yellow),
+                          Text(
+                            widget.property.rating.toString(),
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                          Text(
+                            '(' + '${widget.property.id*127}' + ' Reviews)',
+                            style: TextStyle(color: Colors.grey),
                           ),
                         ],
                       ),

@@ -89,7 +89,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
               color: Colors.blue,
               onPressed: () {
                 print('comm: Pushed _removeMarkedProperty()');
-                return _removeMarkedProperty(context);
+                _removeMarkedProperty(context);
               },
             ),
           ),
@@ -159,10 +159,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                             ),
                             child: Row(
                               children: <Widget>[
-                                Icon(
-                                  Icons.search,
-                                  color: Colors.blue,
-                                ),
+                                Icon(Icons.search, color: Colors.blue),
                                 InkWell(
                                   splashColor: Colors.blueAccent,
                                   onTap: () {

@@ -37,8 +37,8 @@ class PropertyViewModel extends ChangeNotifier {
   ];
   List<bool> get facilitiesAreValues => _facilitiesAreValues;
   List<String> _facilityNameDefault = [
-    'Dining room', 'Bathroom', 'TV room', 'Bedroom', 'Kitchen', 'Drawing room',
-    'Toilet', 'Basin', 'Gym', 'Spa', 'Parking',
+    'Dining room', 'Bathroom', 'TV room', 'Bedroom', 'Kitchen',
+    'Drawing room', 'Toilet', 'Basin', 'Gym', 'Spa', 'Parking',
   ];
 
 

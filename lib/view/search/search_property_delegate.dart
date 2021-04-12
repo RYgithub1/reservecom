@@ -7,15 +7,6 @@ import 'package:reservecom/viewmodel/search_view_model.dart';
 
 
 class SearchPropertyDelegate extends SearchDelegate<Property> {
-  // @override
-  // ThemeData appBarTheme(BuildContext context) {
-  //   final _theme = Theme.of(context);
-  //   return _theme.copyWith(
-  //     brightness: Brightness.dark,
-  //   );
-  // }
-
-
   @override
   Widget buildLeading(BuildContext context) {
     return IconButton(
@@ -100,7 +91,7 @@ class SearchPropertyDelegate extends SearchDelegate<Property> {
                               || _searchViewModel.searchedProperties[position].propertyDetails.description == null
                               ? Column(
                                 children: <Widget>[
-                                  SizedBox(height: 20),
+                                  const SizedBox(height: 20),
                                   const Icon(Icons.browser_not_supported),
                                 ]
                               )

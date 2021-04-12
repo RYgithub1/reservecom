@@ -22,14 +22,14 @@ class PropertyTileRight extends StatelessWidget {
               fontWeight: FontWeight.bold,
             ),
           ),
-          SizedBox(height: 4),
+          const SizedBox(height: 4),
           Text(
             property.city,
             style: textTheme.bodyText1.copyWith(
               color: Colors.grey
             ),
           ),
-          SizedBox(height: 4),
+          const SizedBox(height: 4),
           Row(
             children: <Widget>[
               Row(
@@ -47,7 +47,7 @@ class PropertyTileRight extends StatelessWidget {
                 ),
             ],
           ),
-          SizedBox(height: 4),
+          const SizedBox(height: 4),
           Row(
             children: <Widget>[
               Expanded(
@@ -88,7 +88,7 @@ class PropertyTileRight extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: 4),
+          const SizedBox(height: 4),
           RichText(
             text: TextSpan(
               style: TextStyle(color: Colors.grey, fontSize: 20),

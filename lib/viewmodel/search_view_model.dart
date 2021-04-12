@@ -4,7 +4,6 @@ import '../data/property.dart';
 import '../model/property_repository.dart';
 
 
-
 class SearchViewModel extends ChangeNotifier {
   final PropertyRepository _propertyRepository = PropertyRepository();
 

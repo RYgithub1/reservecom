@@ -20,7 +20,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
       padding: const EdgeInsets.symmetric(horizontal: 12),
       child: Column(
         children: <Widget>[
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
 
           /// [--- SortBy() ---]
           Column(
@@ -28,15 +28,12 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
             children: <Widget>[
               Padding(
                 padding: const EdgeInsets.only(left: 8),
-                child: Text(
-                  'Sort by',
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
+                child: Text('Sort by', style: TextStyle(fontWeight: FontWeight.bold)),
               ),
               SortBy(),
             ],
           ),
-          SizedBox(height: 12),
+          const SizedBox(height: 12),
 
           /// [--- PriceRange() ---]
           Column(
@@ -44,15 +41,12 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
             children: <Widget>[
               Padding(
                 padding: const EdgeInsets.only(left: 8),
-                child: Text(
-                  'Price range',
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
+                child: Text('Price range', style: TextStyle(fontWeight: FontWeight.bold)),
               ),
               PriceRange(),
             ],
           ),
-          SizedBox(height: 12),
+          const SizedBox(height: 12),
 
           /// [--- Rating() ---]
           Column(
@@ -60,28 +54,22 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
             children: <Widget>[
               Padding(
                 padding: const EdgeInsets.only(left: 8),
-                child: Text(
-                  'Rating',
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
+                child: Text('Rating', style: TextStyle(fontWeight: FontWeight.bold)),
               ),
               Rating(),
             ],
           ),
-          SizedBox(height: 12),
+          const SizedBox(height: 12),
 
           /// [--- Facility() ---]
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Text(
-                'Facility',
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
+              Text('Facility', style: TextStyle(fontWeight: FontWeight.bold)),
               FacilitiesAre(),
             ],
           ),
-          SizedBox(height: 4),
+          const SizedBox(height: 4),
 
           /// [--- FlatButton() ---]
           Padding(
@@ -89,10 +77,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
             child: Container(
               width: double.infinity,
               child: FlatButton(
-                child: Text(
-                  'Apply & Search',
-                  style: TextStyle(color: Colors.white),
-                ),
+                child: Text('Apply & Search', style: TextStyle(color: Colors.white)),
                 onPressed: () {
                   Navigator.of(context).push(MaterialPageRoute(
                     builder: (_) => DashboardScreen(),
@@ -105,7 +90,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
               ),
             ),
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
         ],
       ),
     );
