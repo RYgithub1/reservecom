@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import '../../../data/facility.dart';
 
 
-
 class FacilitiesAreChips extends StatelessWidget {
   final Facility _fac;
   FacilitiesAreChips(this._fac);
@@ -16,8 +15,7 @@ class FacilitiesAreChips extends StatelessWidget {
           ? Colors.blue
           : Colors.grey[200],
       child: Container(
-        width: 96,
-        // height: 40,
+        width: 80,
         alignment: Alignment.center,
         margin: EdgeInsets.all(8),
         child: Row(
@@ -29,13 +27,13 @@ class FacilitiesAreChips extends StatelessWidget {
               color: _fac.isSelected
                   ? Colors.white
                   : Colors.black,
-              size: 16,
+              size: 14,
             ),
             SizedBox(width: 4),
             Text(
               _fac.facilityText,
               style: TextStyle(
-                fontSize: 12,
+                fontSize: 10,
                 color: _fac.isSelected
                     ? Colors.white
                     : Colors.black,

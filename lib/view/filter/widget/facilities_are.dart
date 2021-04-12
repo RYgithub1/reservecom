@@ -12,7 +12,6 @@ class FacilitiesAre extends StatefulWidget {
 }
 
 
-
 class _FacilitiesAreState extends State<FacilitiesAre> {
   List<Facility> facil = List<Facility>();
 
@@ -37,12 +36,16 @@ class _FacilitiesAreState extends State<FacilitiesAre> {
     return Container(
       margin: EdgeInsets.all(8.0),
       width: 400,
-      height: 40,
-      child: ListView.builder(      /// [later: オブジェクトの折返し]
-        scrollDirection: Axis.horizontal,
-        shrinkWrap: true,
+      height: 140,
+      child: GridView.builder(
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 3,
+          // childAspectRatio: (100.0 / 40.0),    // GridView縦横比の変更
+          childAspectRatio: MediaQuery.of(context).size.width /
+                              (MediaQuery.of(context).size.height / 5),
+        ),
         itemCount: facil.length,
-        itemBuilder: (context, index) {
+        itemBuilder: (BuildContext context, int index) {
           return InkWell(
             splashColor: Colors.transparent,
             onTap: () {
@@ -57,7 +60,7 @@ class _FacilitiesAreState extends State<FacilitiesAre> {
             },
             child: FacilitiesAreChips(facil[index]),
           );
-        },
+        }
       ),
     );
   }
