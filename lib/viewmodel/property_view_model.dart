@@ -16,8 +16,7 @@ class PropertyViewModel extends ChangeNotifier {
   bool get isLoading => _isLoading;
 
   final List<Property> _properties = [];
-  List<Property> get properties => [..._properties];
-  // List<Property> get properties => _properties;
+  List<Property> get properties => [..._properties];    // [..._properties] vs _properties
 
   bool _isBookedDone = false;  // VMだと共通化 -> 個別ModelClassのValuable
   bool get isBookedDone => _isBookedDone;
@@ -37,12 +36,10 @@ class PropertyViewModel extends ChangeNotifier {
     false, false, false, false, false,
   ];
   List<bool> get facilitiesAreValues => _facilitiesAreValues;
-
   List<String> _facilityNameDefault = [
     'Dining room', 'Bathroom', 'TV room', 'Bedroom', 'Kitchen', 'Drawing room',
     'Toilet', 'Basin', 'Gym', 'Spa', 'Parking',
   ];
-
 
 
 
@@ -60,70 +57,48 @@ class PropertyViewModel extends ChangeNotifier {
       //   print('comm01: id: ' + '${prop.id}' + 'title: ' + '${prop.propertyDetails.title}');
       // });
 
-      /// [... Filter ...]
-      final List<Property> filterdParsedList = List<Property>();          
-      parsedList.forEach((prop) {  /// prop1, prop2, prop3,,,
-        /// [------------]
-        if (_ratingValue <= prop.rating ) {
-          filterdParsedList.add(prop);   /// [かつ -> 共通]
-        }
-        /// [------------]
-        double doublePropRentalPrice = double.parse(prop.rentalPrice.substring(1));
-        if (_rangeValues.start <= doublePropRentalPrice && doublePropRentalPrice <= _rangeValues.end) {
-        }
-        /// [------------]
-        List<String> _facilityNameClicked = [];                    /// [初期化？]
+      /// [========== Filter ==========]
+      final List<Property> filterdParsedList = List<Property>();
+      parsedList.forEach((prop) {    // prop1, prop2, prop3,,,
+        /// [下準備開始（Facility用） ~~~~~~]
+        /// [Facility: 1] APIデータ/各property/facilities格納用
+        List<String> _propFacilityName = [];
+        prop.facilities.forEach((propFacility) {
+          _propFacilityName.add(propFacility.name);
+        });
+        /// [Facility: 2] PropertyScreen/選択したFacility格納用
+        List<String> _facilityNameClicked = [];
         for (int _numClicked = 0; _numClicked < _facilitiesAreValues.length; _numClicked++){
           if (_facilitiesAreValues[_numClicked] == true) {
-            _facilityNameClicked.add(_facilityNameDefault[_numClicked]);  
+            _facilityNameClicked.add(_facilityNameDefault[_numClicked]);
           }
         }
-        print('comm790: $_facilityNameClicked');
-
-        List<String> _propFacilityName = [];   /// [APIの各property、に含むfacility格納]    
-        prop.facilities.forEach((propFacility) {
-          _propFacilityName.add(propFacility.name);  
-        });
-        print('comm661: $_propFacilityName');
-
-        // const found = _propFacilityName.some(r => _facilityNameClicked.includes(r))
-        // _propFacilityName.
-        
+        /// [Facility: 1 <-> 2] 選択したFacilityがAPI/各property/facilitiesに含まれているか判定
         List<bool> _containFacilityBool = [];
-        // for (int _clickedLength = 0; _clickedLength < _facilityNameClicked.length; _clickedLength++){
-        //  クリックした配列３つ長さ、
-          // _propFacilityName
-          // _propFacilityName.forEach((facilityName) {
-        _facilityNameClicked.forEach((_clickedLength) {
-          if (_propFacilityName.contains(_facilityNameClicked[int.parse(_clickedLength)])) {
-            //  各々propに含む_propFacilityNameファシリティの配列.contains (各々含むか"""Bathroom, TV room, Gym''')
-            //  これを、各々のprop分 forEachで確認する
-            // filterdParsedList.add(prop);
+        _facilityNameClicked.forEach((_clickedOne) {
+          if (_propFacilityName.contains(_clickedOne)) {
             _containFacilityBool.add(true);
           } else {
-            // 1つでも含まなければ、filteredParsedListに含まない
-            _containFacilityBool.add(false);
+            _containFacilityBool.add(false);    // 含まれていない項目ならfalse
           }
         });
-        // }
-        if (_containFacilityBool.contains(false)) {
-          // filterdParsedList対象外
+        /// [~~~~~~ 下準備終了（Facility用）]
+        /// [下準備開始（PriceRange用） ~~~~~~]
+        double doublePropRentalPrice = double.parse(prop.rentalPrice.substring(1));
+        /// [~~~~~~ 下準備終了（PriceRange用）]
+        /// [... 実際にFilter ...]
+        if (_ratingValue <= prop.rating    /// [Rating] Can select only one
+            && _rangeValues.start <= doublePropRentalPrice    /// [PriceRange] Min price
+            && doublePropRentalPrice <= _rangeValues.end    /// [PriceRange] Max price
+            && !_containFacilityBool.contains(false)    /// [Facility] 選択したFacilityが、APIのpropに全てある(true)なら、filteredParsedList対象
+        ) {
+          print('comm861: filterdParsedList対象propあり');
+          filterdParsedList.add(prop);    // 共通（[].add重複でerror注意）
         } else {
-          filterdParsedList.add(prop);
+          print('comm863: filterdParsedList対象propなし');
         }
-        print('comm662: filterdParsedList: $filterdParsedList');
+        print('comm240: filterdParsedList.length: ${filterdParsedList.length}');
       });
-      // List<Property> jobList;
-      // var filteredList = List<Property>.from(
-      //   [
-      //     jobList.where((Property e) {
-      //       return
-      //         e.rental_price > user_min_selected_salary
-      //         &&
-      //         e.rental_price < user_max_selected_salary
-      //     })
-      //   ]
-      // )
 
       _properties.clear();
       _properties.addAll(filterdParsedList);
@@ -154,7 +129,6 @@ class PropertyViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
-
   void initializeIsBookedDone() {
     _isBookedDone = false;
   }
@@ -171,13 +145,11 @@ class PropertyViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
-
   Future<void> unmarkIt(Property property) async {
     property.isMarked = await _propertyRepository.unmarkIt(property);
     _markedPropertyBools[(property.id - 1)] = property.isMarked;
     notifyListeners();
   }
-
 
   Future<void> removeMarkedProperty() async {
     await _propertyRepository.removeMarkedProperty();
