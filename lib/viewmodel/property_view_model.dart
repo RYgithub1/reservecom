@@ -21,7 +21,7 @@ class PropertyViewModel extends ChangeNotifier {
   bool _isBookedDone = false;  // VMだと共通化 -> 個別ModelClassのValuable
   bool get isBookedDone => _isBookedDone;
 
-  List<bool> _markedPropertyBools = [
+  List<bool> _markedPropertyBools = [  /// dafaultValue  [---]
     false, false, false, false,
     false, false, false, false,
   ];
@@ -57,7 +57,7 @@ class PropertyViewModel extends ChangeNotifier {
       //   print('comm01: id: ' + '${prop.id}' + 'title: ' + '${prop.propertyDetails.title}');
       // });
 
-      /// [========== Filter ==========]
+      /// [========== Filter ==========]    /// [---]
       final List<Property> filterdParsedList = List<Property>();
       parsedList.forEach((prop) {    // prop1, prop2, prop3,,,
         /// [下準備開始（Facility用） ~~~~~~]
@@ -100,7 +100,7 @@ class PropertyViewModel extends ChangeNotifier {
         print('comm240: filterdParsedList.length: ${filterdParsedList.length}');
       });
 
-      _properties.clear();
+      _properties.clear();   /// [---]
       _properties.addAll(filterdParsedList);
       // _properties.forEach((prop) {
       //   print('comm07: id: ' + '${prop.id}' + 'title: ' + '${prop.propertyDetails.title}');
@@ -122,8 +122,8 @@ class PropertyViewModel extends ChangeNotifier {
   }
 
 
-  Future<void> getFutureValue() async {
-    notifyListeners();
+  Future<void> getFutureValue() async {  /// [name]  [---]
+    notifyListeners();    /// [---]
     await Future.delayed(Duration(seconds: 2));
     _isBookedDone = true;
     notifyListeners();

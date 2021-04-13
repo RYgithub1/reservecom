@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart' as DotEnv;
 import 'package:provider/provider.dart';
 
+import 'constant/constant.dart';
 import 'routing/service_locator.dart';
 import 'view/home_screen.dart';
+import 'viewmodel/multi_theme_view_model.dart';
 import 'viewmodel/property_view_model.dart';
 import 'viewmodel/search_view_model.dart';
 
@@ -15,6 +17,9 @@ Future<void> main() async {
   runApp(
     MultiProvider(
       providers: [
+        ChangeNotifierProvider<MultiThemeViewModel>(
+          create: (_) => MultiThemeViewModel(),
+        ),
         ChangeNotifierProvider<PropertyViewModel>(
           create: (_) => PropertyViewModel(),
         ),
@@ -33,10 +38,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'RESERVE COM',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
+      theme: multiThemeLight,
       home:  HomeScreen(),
     );
   }

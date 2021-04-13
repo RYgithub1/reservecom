@@ -5,7 +5,7 @@ import '../../data/property.dart';
 import '../../viewmodel/property_view_model.dart';
 
 
-class PropertyScreen extends StatefulWidget {
+class PropertyScreen extends StatefulWidget {    /// [---]
   final Property property;
   PropertyScreen({this.property});
   @override
@@ -271,7 +271,8 @@ class _PropertyScreenState extends State<PropertyScreen> {
                           child: Text('Book Now',style: TextStyle(color: Colors.white)),
                           onPressed: () {
                             widget.property.isReserved = true;
-                            return _propertyViewModel.getFutureValue();
+                            // return _propertyViewModel.getFutureValue();
+                            _propertyViewModel.getFutureValue();  /// [---]
                           },
                         )
                         :  _propertyViewModel.isBookedDone == false

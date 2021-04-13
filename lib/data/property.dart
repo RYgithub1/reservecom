@@ -1,5 +1,5 @@
 class Property {
-  int id;
+  int id;  /// final [---]
   String city;
   String streetAddress;
   String rentalPrice;
@@ -13,7 +13,7 @@ class Property {
   bool isMarked;
 
   Property({
-    this.id,
+    this.id,  /// @required!?[---]
     this.city,
     this.streetAddress,
     this.rentalPrice,
