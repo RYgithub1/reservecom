@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart' as DotEnv;
 import 'package:provider/provider.dart';
 
-import 'constant/constant.dart';
 import 'routing/service_locator.dart';
 import 'view/home_screen.dart';
 import 'viewmodel/multi_theme_view_model.dart';
@@ -35,10 +34,12 @@ Future<void> main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+  final _multiThemeViewModel = Provider.of<MultiThemeViewModel>(context);  // Theme変更時にlisten必要
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'RESERVE COM',
-      theme: multiThemeLight,
+      theme: _multiThemeViewModel.selectedTheme,
       home:  HomeScreen(),
     );
   }

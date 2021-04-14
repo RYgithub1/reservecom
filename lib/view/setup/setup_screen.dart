@@ -16,12 +16,14 @@ class SetupScreen extends StatelessWidget {
         title: Text('Setup'),
       ),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           Center(child: Text('coming soon')),
           RaisedButton(
             child: _isMultiTheme
-                ? const Text('Go Dark Theme')
-                : const Text('Go Light Theme'),
+                ? const Text('Go Light Side')
+                : const Text('Go Dark Side'),
             color: Colors.blue,
             textColor: Colors.black,
             onPressed: () => _changeMultiTheme(context, _isMultiTheme),  // 背反
