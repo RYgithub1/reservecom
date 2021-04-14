@@ -24,7 +24,7 @@ class SetupScreen extends StatelessWidget {
                 : const Text('Go Light Theme'),
             color: Colors.blue,
             textColor: Colors.black,
-            onPressed: () => _changeMultiTheme(context, _isMultiTheme),
+            onPressed: () => _changeMultiTheme(context, _isMultiTheme),  // 背反
           ),
         ],
       ),

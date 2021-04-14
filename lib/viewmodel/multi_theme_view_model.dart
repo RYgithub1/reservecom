@@ -10,7 +10,9 @@ class MultiThemeViewModel extends ChangeNotifier {
   bool get isMultiTheme =>  _isMultiTheme;
 
 
-  void changeMultiTheme(bool isMultiTheme) {
-    _multiThemeRepository.changeMultiTheme(isMultiTheme);
+  void changeMultiTheme(bool isMultiThemeMode) async {
+    // isMultiTheme = await _multiThemeRepository.changeMultiTheme(isMultiTheme);
+    await _multiThemeRepository.changeMultiTheme(isMultiThemeMode);
+    _isMultiTheme = isMultiThemeMode;  // 上awaitでRへセット後に確定（代入）
   }
 }
