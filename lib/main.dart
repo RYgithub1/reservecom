@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart' as DotEnv;
 import 'package:provider/provider.dart';
 
+import 'model/multi_theme_repository.dart';
 import 'routing/service_locator.dart';
 import 'view/home_screen.dart';
 import 'viewmodel/multi_theme_view_model.dart';
@@ -10,7 +11,10 @@ import 'viewmodel/search_view_model.dart';
 
 
 Future<void> main() async {
-  // WidgetsFlutterBinding.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized();  // main.dartで非同期を行うので必要
+  final MultiThemeRepository _multiThemeRepository = MultiThemeRepository();
+  await _multiThemeRepository.getMultiTheme();  // 所作ゆえawait必要
+
   await DotEnv.load(fileName: ".env");
   await setupLocator();
   runApp(
