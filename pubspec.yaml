@@ -27,6 +27,7 @@ dependencies:
   firebase_analytics: ^7.0.1
   bubble: ^1.2.1
   dash_chat: ^1.1.15
+  google_fonts: ^2.0.0
 
 
 dev_dependencies:
